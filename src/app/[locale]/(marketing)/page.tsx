@@ -1,4 +1,5 @@
-﻿import type { Metadata } from "next";
+﻿// src/app/[locale]/(marketing)/page.tsx
+import type { Metadata } from "next";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
@@ -145,34 +146,27 @@ export default async function HomePage({
 
   return (
     <main>
-      {/* WebPage Schema - itemtype attribute ile */}
+      {/* WebPage Schema - SADECE JSON-LD */}
       <script
         type="application/ld+json"
-        itemID={`https://endijital.com/${locale}#webpage`}
-        itemScope
-        itemType="https://schema.org/WebPage"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(homePageJsonLd(locale)),
         }}
       />
 
-      {/* Breadcrumb Schema */}
+      {/* Breadcrumb Schema - SADECE JSON-LD */}
       <script
         type="application/ld+json"
-        itemScope
-        itemType="https://schema.org/BreadcrumbList"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbJsonLd(locale)),
         }}
       />
 
-      {/* 4 Service Schema */}
+      {/* 4 Service Schema - SADECE JSON-LD */}
       {servicesList.map((service, i) => (
         <script
           key={`service-${i}`}
           type="application/ld+json"
-          itemScope
-          itemType="https://schema.org/Service"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(service),
           }}
