@@ -1,26 +1,367 @@
+/* src/app/globals.css */
+
+/* ========================================================================
+   TAILWIND CSS v4 - SINGLE IMPORT
+   ======================================================================== */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ========================================================================
+   CONTENT SCANNING GARANTİSİ
+   ------------------------------------------------------------------------
+   Proje Git repository olmadığı için Tailwind v4 otomatik algılamada
+   dosyaları atlayabilir. @source ile src/ altındaki TÜM dosyaların
+   taranması zorunlu kılınır.
+   ======================================================================== */
+@source "../";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ========================================================================
+   THEME CONFIGURATION
+   ======================================================================== */
+@theme {
+  /* Font Family */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Border Radius Scale */
+  --radius: 0.75rem;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
+  /* Color System - HSL Custom Properties (Shadcn/UI uyumlu) */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Custom Animations */
+  --animate-gradient-x: gradient-x 15s ease infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  /* Keyframes */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ========================================================================
+   BASE LAYER
+   ======================================================================== */
+@layer base {
+  :root {
+    /* Dark Mode (Endijital Default) */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 263.4 70% 50.4%;
+
+    /* Glassmorphic Tokens */
+    --glass-bg: rgba(15, 23, 42, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ========================================================================
+   COMPONENTS LAYER - DESIGN SYSTEM TOKENS
+   ------------------------------------------------------------------------
+   @layer components içindeki class'lar JIT'e BAĞLI DEĞİLDİR;
+   her zaman CSS output'una girer. Bu yüzden font/boyut değerleri
+   %100 garantili uygulanır (Git repository olmasa bile).
+   ======================================================================== */
+@layer components {
+  /* Logo - 40px kutu (Vercel/Linear standardı) */
+  .logo-box {
+    width: 2.5rem;   /* 40px */
+    height: 2.5rem;  /* 40px */
+    border-radius: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* Logo yazısı - 20px mobil / 24px desktop */
+  .logo-text {
+    font-size: 1.25rem;      /* 20px */
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .logo-text {
+      font-size: 1.5rem;     /* 24px */
+    }
+  }
+
+  /* Navigasyon linki - 15px / medium / tracking (Stripe standardı) */
+  .nav-link {
+    font-size: 0.9375rem;    /* 15px */
+    font-weight: 500;
+    letter-spacing: 0.025em;
+  }
+
+  /* CTA butonu - 15px / semibold */
+  .cta-button {
+    font-size: 0.9375rem;    /* 15px */
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+
+  /* Footer kolon başlığı - uppercase + tracking (Stripe standardı) */
+  .footer-heading {
+    font-size: 0.875rem;     /* 14px */
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Footer linkleri ve metinleri - 15px */
+  .footer-link,
+  .footer-text {
+    font-size: 0.9375rem;    /* 15px */
+  }
+
+  /* Sosyal ikon - 44px dokunma hedefi (WCAG) */
+  .social-icon {
+    width: 2.75rem;          /* 44px */
+    height: 2.75rem;         /* 44px */
+    border-radius: 0.75rem;
+  }
+}
+
+/* ========================================================================
+   UTILITIES LAYER
+   ======================================================================== */
+@layer utilities {
+  /* Glassmorphism Effects */
+  .glassmorphic {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glassmorphic-strong {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Gradient Text */
+  .text-gradient {
+    background: linear-gradient(to right, rgb(96, 165, 250), rgb(167, 139, 250), rgb(236, 72, 153));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-animated {
+    background: linear-gradient(to right, rgb(96, 165, 250), rgb(167, 139, 250), rgb(236, 72, 153));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-x 15s ease infinite;
+  }
+
+  /* Neon Glow Effects */
+  .neon-glow {
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
+  }
+
+  .neon-glow-hover {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .neon-glow-hover:hover {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.7), 0 0 40px rgba(59, 130, 246, 0.5);
+  }
+
+  /* Card Glow Border Effect */
+  .card-glow {
+    position: relative;
+  }
+
+  .card-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(139, 92, 246, 0.4), rgba(236, 72, 153, 0.4));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Line Clamp Utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* ========================================================================
+   ACCESSIBILITY & RESPONSIVE ENHANCEMENTS
+   ======================================================================== */
+
+/* Screen Reader Only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile Touch Targets - Minimum 44x44px */
+@media (max-width: 768px) {
+  button,
+  a,
+  input[type="button"],
+  input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .glassmorphic,
+  .glassmorphic-strong {
+    background: hsl(var(--background));
+    border: 2px solid hsl(var(--foreground));
+    backdrop-filter: none;
+  }
+
+  .text-gradient,
+  .text-gradient-animated {
+    -webkit-text-fill-color: hsl(var(--foreground));
+    background: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .glassmorphic,
+  .glassmorphic-strong,
+  .neon-glow {
+    background: white;
+    border: 1px solid black;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  .card-glow::before {
+    display: none;
+  }
+
+  .text-gradient,
+  .text-gradient-animated {
+    -webkit-text-fill-color: black;
+    background: none;
+  }
 }

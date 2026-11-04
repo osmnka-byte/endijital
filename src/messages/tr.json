@@ -1,0 +1,514 @@
+{
+  "meta": {
+    "siteName": "Endijital",
+    "siteDescription": "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler.",
+    "siteUrl": "https://endijital.com"
+  },
+  "nav": {
+    "services": "Hizmetler",
+    "portfolio": "Portfolyo",
+    "about": "Hakkımızda",
+    "contact": "İletişim",
+    "startProject": "Proje Başlat"
+  },
+  "hero": {
+    "badge": "🚀 Geleceğin Web Mimarisi & Cloudflare Edge Altyapısı",
+    "title": "Geleneksel Web Sitelerinin Ötesinde: Yüksek Performanslı Dijital Ürünler",
+    "subtitle": "İşletmelerin ve e-ticaret markalarının dijital dünyada hızla büyümesi, ölçeklenebilir altyapılar kurması ve operasyonel verimlilik kazanması için uçtan uca modern web çözümleri geliştiriyoruz.",
+    "cta": {
+      "primary": "Projenizi Başlatın",
+      "secondary": "Portfolyomuzu İnceleyin"
+    }
+  },
+  "services": {
+    "sectionTitle": "Uzmanlık Alanlarımız",
+    "sectionDescription": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak kapsamlı dijital çözümler.",
+    "nextjs": {
+      "title": "Next.js 15 Mimarisi",
+      "description": "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları geliştiriyoruz."
+    },
+    "cloudflare": {
+      "title": "Cloudflare Edge & Güvenlik",
+      "description": "Cloudflare Pages, Workers ve WAF entegrasyonu ile dünyanın her noktasında milisaniyeler içinde yüklenen, DDoS ve bot saldırılarına karşı korunaklı edge-first altyapılar kuruyoruz."
+    },
+    "ecommerce": {
+      "title": "E-Ticaret Çözümleri",
+      "description": "Headless e-ticaret mimarisi ile Shopify, Medusa ve özel ödeme altyapılarını entegre ediyor, dönüşüm oranı yüksek ve ödeme akışları optimize edilmiş satış platformları inşa ediyoruz."
+    },
+    "performance": {
+      "title": "Performans & SEO Optimizasyonu",
+      "description": "%100 PageSpeed skorları, Zero-CLS, Core Web Vitals uyumluluğu ve yapılandırılmış veri (Schema.org) ile arama motorlarında zirveye oynayan teknik SEO altyapısı sunuyoruz."
+    }
+  },
+  "portfolio": {
+    "sectionTitle": "Ürünlerimiz ve Projelerimiz",
+    "sectionDescription": "Kendi SaaS ürünlerimizden müşteri projelerimize ve Ar-Ge çalışmalarımıza kadar, modern web teknolojileriyle geliştirdiğimiz işlerden bazıları. NDA kapsamındaki çalışmalarımız vitrinde gösterilmemektedir.",
+    "viewProject": "Projeyi İncele",
+    "projects": [
+      {
+        "title": "Kâr Dedektörü",
+        "slug": "kar-dedektoru",
+        "badge": "Geliştirmede",
+        "category": "saas",
+        "description": "Trendyol ve Hepsiburada satıcıları için komisyon, kargo ve hizmet bedellerini görünür kılan yapay zekâ destekli kârlılık analizi platformu.",
+        "image": "/images/portfolio/kar-dedektoru.png",
+        "tags": ["Next.js 16", "TypeScript", "Tailwind CSS", "Turbopack", "Lucide React"]
+      },
+      {
+        "title": "Entegrematik",
+        "slug": "entegrematik",
+        "badge": "Geliştirmede",
+        "category": "saas",
+        "description": "Ürün listeleme, sipariş ve fatura süreçlerini tek panelden yöneten çoklu pazaryeri entegrasyon platformu.",
+        "image": "/images/portfolio/entegrematik.png",
+        "tags": ["Next.js App Router", "TypeScript", "Tailwind CSS", "Static Export", "Turbopack"]
+      },
+      {
+        "title": "TechNova SaaS Platform",
+        "slug": "technova",
+        "badge": "Demo",
+        "category": "demo",
+        "description": "Yüksek trafikli B2B SaaS senaryoları için edge-first mimariyi sergileyen teknik demo çalışması.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Next.js 15", "Cloudflare Workers", "TypeScript", "PostgreSQL"]
+      },
+      {
+        "title": "LuxeCommerce E-Ticaret",
+        "slug": "luxecommerce",
+        "badge": "Demo",
+        "category": "demo",
+        "description": "Headless e-ticaret akışlarını (ürün, sepet, checkout) uçtan uca sergileyen demo storefront çalışması.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Shopify", "Next.js", "Sanity CMS", "Stripe"]
+      },
+      {
+        "title": "FinEdge Dashboard",
+        "slug": "finedge",
+        "badge": "Ar-Ge",
+        "category": "arge",
+        "description": "Gerçek zamanlı finansal veri görselleştirme tekniklerini araştırdığımız Ar-Ge dashboard'u.",
+        "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["React 19", "WebSocket", "Chart.js", "Cloudflare Pages"]
+      },
+      {
+        "title": "GreenEnergy Corporate",
+        "slug": "greenenergy",
+        "badge": "Demo",
+        "category": "demo",
+        "description": "Kurumsal site mimarisi ve teknik SEO pratiklerini (statik export, Zero-CLS) gösteren demo çalışması.",
+        "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Next.js", "Cloudflare Pages", "MDX", "SEO"]
+      },
+      {
+        "title": "EdgePerf Lab",
+        "slug": "edgeperf-lab",
+        "badge": "Ar-Ge",
+        "category": "arge",
+        "description": "Core Web Vitals ve Lighthouse optimizasyon tekniklerini geliştirdiğimiz dahili performans laboratuvarı.",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Next.js", "Cloudflare Pages", "Lighthouse", "Web Vitals"]
+      },
+      {
+        "title": "Luxe Marketplace UI",
+        "slug": "luxe-marketplace-ui",
+        "badge": "Konsept",
+        "category": "concept",
+        "description": "Premium e-ticaret deneyimleri için araştırma amaçlı tasarladığımız dark-mode UI/UX konsept çalışması.",
+        "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Figma", "Tailwind CSS", "Design Tokens", "WCAG 2.1"]
+      }
+    ]
+  },
+  "portfolio_detail": {
+    "backToPortfolio": "Portfolyoya Dön",
+    "projectOverview": "Proje Özeti",
+    "technologies": "Kullanılan Teknolojiler",
+    "features": "Öne Çıkan Özellikler",
+    "screenshots": "Ekran Görüntüleri",
+    "visitWebsite": "Web Sitesini Ziyaret Et",
+    "projects": {
+      "kar-dedektoru": {
+        "title": "Kâr Dedektörü",
+        "subtitle": "Pazaryeri Satıcıları için Kârlılık Analiz Platformu",
+        "badge": "Geliştirmede",
+        "description": "Trendyol ve Hepsiburada satıcıları için komisyon, kargo ve hizmet bedellerini görünür kılan yapay zekâ destekli kârlılık analizi platformu.",
+        "longDescription": "Kâr Dedektörü, pazaryeri satıcılarının brüt ciro ile gerçek net kâr arasındaki görünmeyen kayıpları ortaya çıkarmak için geliştirdiğimiz SaaS platformudur. Komisyon oranları, değişken kargo tarifeleri, hizmet bedelleri ve KDV kesintilerini sipariş bazında hesaplayarak ürün düzeyinde kârlılık görünümü sunar. Platform şu anda kapalı beta sürecindedir.",
+        "image": "/images/portfolio/kar-dedektoru.png",
+        "screenshots": [],
+        "technologies": ["Next.js 16", "TypeScript", "Turbopack", "Tailwind CSS", "Lucide React", "Geist & Geist Mono"],
+        "features": [
+          "Sipariş bazlı net kâr hesaplama",
+          "Gizli kesinti ve zarar alarmları",
+          "Trendyol & Hepsiburada veri entegrasyonu",
+          "12 aylık kâr/zarar trend analizi",
+          "SKU bazlı kârlılık raporları"
+        ],
+        "url": "",
+        "results": {
+          "model": "SaaS",
+          "kapsam": "2 pazaryeri",
+          "durum": "Kapalı Beta"
+        }
+      },
+      "entegrematik": {
+        "title": "Entegrematik",
+        "subtitle": "Çoklu Pazaryeri Entegrasyon ve Operasyon Platformu",
+        "badge": "Geliştirmede",
+        "description": "Ürün listeleme, sipariş ve fatura süreçlerini tek panelden yöneten çoklu pazaryeri entegrasyon platformu.",
+        "longDescription": "Entegrematik, e-ticaret satıcılarının birden fazla pazaryerindeki ürünlerini, siparişlerini ve faturalarını tek ekrandan yönetmesini sağlayan entegrasyon platformudur. Günlük ciro, bekleyen sipariş ve entegrasyon sağlık durumunu özetleyen kontrol paneliyle operasyonel yükü azaltır. Platformun yeni nesil arayüzü geliştirme sürecindedir.",
+        "image": "/images/portfolio/entegrematik.png",
+        "screenshots": [],
+        "technologies": ["Next.js App Router", "React", "TypeScript", "Static Export (SSG)", "Turbopack", "Tailwind CSS"],
+        "features": [
+          "Çoklu pazaryerinde ürün listeleme",
+          "Tek panelden sipariş yönetimi",
+          "Otomatik fatura süreçleri",
+          "Günlük ciro ve sipariş dashboard'u",
+          "Entegrasyon sağlık izleme"
+        ],
+        "url": "https://entegrematik.com",
+        "results": {
+          "model": "SaaS",
+          "kapsam": "Çoklu pazaryeri",
+          "durum": "Yeni sürüm geliştirmede"
+        }
+      },
+      "technova": {
+        "title": "TechNova SaaS Platform",
+        "subtitle": "Edge-First B2B SaaS Mimari Gösterimi",
+        "badge": "Demo",
+        "description": "Yüksek trafikli B2B SaaS senaryoları için edge-first mimariyi sergileyen teknik demo çalışması.",
+        "longDescription": "TechNova, yüksek trafikli B2B SaaS senaryolarında edge-first mimarinin sınırlarını göstermek amacıyla geliştirdiğimiz bir demo çalışmasıdır; gerçek bir müşteri kapsamı yoktur. Next.js 15 App Router ve Cloudflare Workers ile gerçek zamanlı veri senkronizasyonu, çok kiracılı (multi-tenant) yapı ve edge-cached API yanıtları bu demoda sergilenmektedir.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js 15", "Cloudflare Workers", "TypeScript", "PostgreSQL", "Redis", "WebSocket"],
+        "features": [
+          "Multi-tenant mimari desenleri",
+          "Gerçek zamanlı veri senkronizasyonu",
+          "Edge-cached API yanıtları",
+          "Otomatik ölçeklendirme senaryoları",
+          "SSO ve RBAC güvenlik kurgusu"
+        ],
+        "url": "",
+        "results": {
+          "tür": "Demo",
+          "odak": "Edge mimari",
+          "stack": "Next.js 15 + Workers"
+        }
+      },
+      "luxecommerce": {
+        "title": "LuxeCommerce E-Ticaret",
+        "subtitle": "Headless Storefront Demo Çalışması",
+        "badge": "Demo",
+        "description": "Headless e-ticaret akışlarını (ürün, sepet, checkout) uçtan uca sergileyen demo storefront çalışması.",
+        "longDescription": "LuxeCommerce, headless e-ticaret akışlarını uçtan uca sergileyen bir demo storefront çalışmasıdır; gerçek bir müşteri kapsamı yoktur. Ürün listeleme, sepet ve checkout akışları Next.js 15 statik export ile optimize edilmiş; ödeme katmanı Stripe benzeri bir sandbox üzerinden kurgulanmıştır.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js 15", "Shopify Storefront API", "Sanity CMS", "Stripe", "Tailwind CSS"],
+        "features": [
+          "Headless storefront mimarisi",
+          "CMS destekli içerik yönetimi",
+          "Sandbox ödeme akışı",
+          "Çoklu dil ve para birimi kurgusu",
+          "Dönüşüm odaklı checkout tasarımı"
+        ],
+        "url": "",
+        "results": {
+          "tür": "Demo",
+          "odak": "Headless ticaret",
+          "stack": "Next.js + Stripe"
+        }
+      },
+      "finedge": {
+        "title": "FinEdge Dashboard",
+        "subtitle": "Gerçek Zamanlı Veri Görselleştirme Ar-Ge'si",
+        "badge": "Ar-Ge",
+        "description": "Gerçek zamanlı finansal veri görselleştirme tekniklerini araştırdığımız Ar-Ge dashboard'u.",
+        "longDescription": "FinEdge, gerçek zamanlı finansal veri görselleştirme tekniklerini araştırdığımız bir Ar-Ge çalışmasıdır. WebSocket tabanlı veri akışı, edge-cached grafikler ve yüksek frekanslı güncellemelerin Core Web Vitals üzerindeki etkileri bu projede ölçülmüştür.",
+        "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["React 19", "Cloudflare Pages", "WebSocket", "Chart.js", "Durable Objects"],
+        "features": [
+          "WebSocket veri akışı prototipi",
+          "Özelleştirilebilir widget mimarisi",
+          "Yüksek frekanslı grafik render testleri",
+          "CLS etkisi ölçümlemesi",
+          "Edge cache senaryoları"
+        ],
+        "url": "",
+        "results": {
+          "tür": "Ar-Ge",
+          "odak": "Gerçek zamanlı veri",
+          "ölçüm": "<100ms güncelleme"
+        }
+      },
+      "greenenergy": {
+        "title": "GreenEnergy Corporate",
+        "subtitle": "Kurumsal Mimari ve Teknik SEO Gösterimi",
+        "badge": "Demo",
+        "description": "Kurumsal site mimarisi ve teknik SEO pratiklerini (statik export, Zero-CLS) gösteren demo çalışması.",
+        "longDescription": "GreenEnergy, kurumsal web sitesi mimarisi ve teknik SEO pratiklerini (statik export, Zero-CLS, yapılandırılmış veri) göstermek amacıyla geliştirdiğimiz bir demo çalışmasıdır; gerçek bir müşteri kapsamı yoktur.",
+        "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js 15", "Cloudflare Pages", "MDX", "Schema.org", "Tailwind CSS"],
+        "features": [
+          "%100 statik export kurgusu",
+          "Zero-CLS sayfa mimarisi",
+          "MDX içerik altyapısı",
+          "Schema.org yapılandırılmış veri",
+          "Çoklu dil (TR/EN) kurulumu"
+        ],
+        "url": "",
+        "results": {
+          "tür": "Demo",
+          "odak": "Teknik SEO",
+          "lighthouse": "100/100"
+        }
+      },
+      "edgeperf-lab": {
+        "title": "EdgePerf Lab",
+        "subtitle": "Dahili Core Web Vitals Optimizasyon Laboratuvarı",
+        "badge": "Ar-Ge",
+        "description": "Core Web Vitals ve Lighthouse optimizasyon tekniklerini geliştirdiğimiz dahili performans laboratuvarı.",
+        "longDescription": "EdgePerf Lab, ajans bünyesinde yürüttüğümüz sürekli bir Ar-Ge çalışmasıdır. LCP, CLS ve INP metriklerini iyileştirmeye yönelik teknikleri (kritik CSS, font yükleme stratejileri, görsel önceliklendirme, edge caching) bu laboratuvarda dener ve ölçeriz. Bu sitedeki 100/100 Lighthouse skorları bu çalışmanın doğrudan sonucudur.",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js", "Cloudflare Pages", "Lighthouse", "Web Vitals"],
+        "features": [
+          "LCP / CLS / INP optimizasyon deneyleri",
+          "Kritik CSS ve font yükleme stratejileri",
+          "Görsel önceliklendirme testleri",
+          "Edge cache senaryoları"
+        ],
+        "url": "",
+        "results": {
+          "lighthouse": "100/100",
+          "lcp": "0.7s",
+          "cls": "0"
+        }
+      },
+      "luxe-marketplace-ui": {
+        "title": "Luxe Marketplace UI",
+        "subtitle": "Premium E-Ticaret için UI/UX Konsept Çalışması",
+        "badge": "Konsept",
+        "description": "Premium e-ticaret deneyimleri için araştırma amaçlı tasarladığımız dark-mode UI/UX konsept çalışması.",
+        "longDescription": "Luxe Marketplace UI, herhangi bir müşteri kapsamı olmadan, tamamen araştırma ve tasarım keşfi amacıyla ürettiğimiz bir UI/UX konsept çalışmasıdır. Glassmorphic yüzeyler, neon vurgular ve mobil öncelikli bileşen sistemleri bu çalışmada prototiplenmiştir.",
+        "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Figma", "Tailwind CSS", "Design Tokens", "WCAG 2.1"],
+        "features": [
+          "Dark-mode tasarım sistemi",
+          "Glassmorphic bileşen kütüphanesi",
+          "Mobil öncelikli arayüz akışları",
+          "Erişilebilirlik (WCAG) kontrolleri"
+        ],
+        "url": "",
+        "results": {
+          "tür": "Konsept",
+          "kapsam": "UI/UX",
+          "araç": "Figma + Tailwind"
+        }
+      }
+    }
+  },
+  "about": {
+    "sectionTitle": "Neden Endijital?",
+    "description": "Biz sadece web sitesi yapmıyoruz; işletmenizin dijital geleceğini inşa ediyoruz. Modern teknolojiler, edge-first mimari ve performans odaklı yaklaşımımızla fark yaratıyoruz.",
+    "stats": [
+      { "label": "Teslim Edilen Proje", "value": "20+" },
+      { "label": "SaaS Platformu", "value": "5+" },
+      { "label": "Lighthouse Skoru", "value": "100/100" },
+      { "label": "Ortalama LCP", "value": "0.7s" }
+    ],
+    "techStack": {
+      "title": "Teknoloji Yığınımız",
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Cloudflare", "Node.js", "PostgreSQL", "GraphQL"]
+    }
+  },
+  "cta": {
+    "title": "Projenizi Hayata Geçirmeye Hazır mısınız?",
+    "description": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyalım. Ücretsiz keşif görüşmesi için hemen iletişime geçin.",
+    "buttonText": "Ücretsiz Görüşme Planla"
+  },
+  "footer": {
+    "brand": {
+      "description": "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
+    },
+    "quickLinks": {
+      "title": "Hızlı Erişim",
+      "links": [
+        { "label": "Ana Sayfa", "href": "/" },
+        { "label": "Hizmetler", "href": "/services" },
+        { "label": "Portfolyo", "href": "/portfolio" },
+        { "label": "Hakkımızda", "href": "/about" },
+        { "label": "İletişim", "href": "/contact" }
+      ]
+    },
+    "services": {
+      "title": "Hizmetlerimiz",
+      "links": [
+        { "label": "Next.js Geliştirme", "href": "/services" },
+        { "label": "Cloudflare Edge", "href": "/services" },
+        { "label": "E-Ticaret Çözümleri", "href": "/services" },
+        { "label": "SEO Optimizasyonu", "href": "/services" }
+      ]
+    },
+    "social": {
+      "title": "Sosyal Medya",
+      "links": [
+        { "label": "LinkedIn", "href": "https://linkedin.com", "icon": "linkedin" },
+        { "label": "Twitter", "href": "https://twitter.com", "icon": "twitter" },
+        { "label": "GitHub", "href": "https://github.com", "icon": "github" },
+        { "label": "Instagram", "href": "https://instagram.com", "icon": "instagram" }
+      ]
+    },
+    "copyright": "© 2026 Endijital. Tüm hakları saklıdır.",
+    "madeWith": "Next.js 15 & Cloudflare Edge ile ❤️ yapıldı"
+  },
+  "contact": {
+    "pageTitle": "İletişime Geçin",
+    "pageDescription": "Projenizi hayata geçirmek için hazır mısınız? Bize ulaşın, 24 saat içinde size dönüş yapalım.",
+    "info": {
+      "email": {
+        "label": "E-posta",
+        "value": "info@endijital.com",
+        "href": "mailto:info@endijital.com"
+      },
+      "location": {
+        "label": "Adres",
+        "value": "Kurtköy Mahallesi, Dr. Gürol Başaran Sokak, No: 1, Pendik / İstanbul",
+        "href": "https://www.google.com/maps/search/?api=1&query=Kurtk%C3%B6y%20Mahallesi%2C%20Dr.%20G%C3%BCrol%20Ba%C5%9Far%20Sokak%20No%3A%201%2C%20Pendik%20%2F%20%C4%B0stanbul"
+      },
+      "hours": {
+        "label": "Çalışma Saatleri",
+        "value": "Pzt-Cum: 09:00 - 18:00",
+        "href": "#"
+      }
+    },
+    "form": {
+      "name": { "label": "Ad Soyad", "placeholder": "Adınızı ve soyadınızı girin" },
+      "email": { "label": "E-posta", "placeholder": "ornek@email.com" },
+      "company": { "label": "Şirket (Opsiyonel)", "placeholder": "Şirket adınız" },
+      "message": { "label": "Proje Detayları", "placeholder": "Projeniz hakkında bize biraz bilgi verin..." },
+      "submit": "Mesaj Gönder",
+      "sending": "Gönderiliyor...",
+      "success": "Mesajınız başarıyla gönderildi! 24 saat içinde size dönüş yapacağız.",
+      "error": "Bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+    }
+  },
+  "services_page": {
+    "pageTitle": "Hizmetlerimiz",
+    "pageDescription": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak kapsamlı dijital çözümler.",
+    "detailed": [
+      {
+        "title": "Next.js 15 Geliştirme",
+        "description": "App Router, React Server Components, Streaming ve Partial Prerendering ile ultra hızlı, SEO dostu web uygulamaları.",
+        "features": [
+          "App Router ve React 19 entegrasyonu",
+          "Server Components ve Streaming",
+          "Incremental Static Regeneration (ISR)",
+          "Edge Runtime optimizasyonu",
+          "TypeScript ile tip güvenliği"
+        ]
+      },
+      {
+        "title": "Cloudflare Edge Altyapısı",
+        "description": "Dünya genelinde 200+ lokasyonda edge-cached, DDoS korumalı ve milisaniyeler içinde yüklenen web siteleri.",
+        "features": [
+          "Cloudflare Pages statik hosting",
+          "Workers ile serverless fonksiyonlar",
+          "WAF ve DDoS koruması",
+          "SSL/TLS otomatik yapılandırma",
+          "Real User Monitoring (RUM)"
+        ]
+      },
+      {
+        "title": "Headless E-Ticaret",
+        "description": "Shopify, Medusa veya özel backend ile yüksek dönüşümlü, ölçeklenebilir e-ticaret platformları.",
+        "features": [
+          "Shopify Storefront API entegrasyonu",
+          "Medusa.js custom backend",
+          "Stripe ve iyzico ödeme altyapısı",
+          "Sepet ve checkout optimizasyonu",
+          "Inventory ve order management"
+        ]
+      },
+      {
+        "title": "Performans & SEO",
+        "description": "%100 PageSpeed skorları, Core Web Vitals uyumluluğu ve arama motorlarında üst sıralama.",
+        "features": [
+          "Lighthouse ve PageSpeed optimizasyonu",
+          "Core Web Vitals (LCP, FID, CLS)",
+          "Schema.org yapılandırılmış veri",
+          "XML Sitemap ve robots.txt",
+          "Canonical ve hreflang etiketleri"
+        ]
+      }
+    ]
+  },
+  "portfolio_page": {
+    "pageTitle": "Portfolyomuz",
+    "pageDescription": "Kendi SaaS ürünlerimizden müşteri projelerimize ve Ar-Ge çalışmalarımıza kadar geliştirdiğimiz işlerden bazıları. NDA kapsamındaki çalışmalarımız vitrinde gösterilmemektedir.",
+    "filter": {
+      "all": "Tümü",
+      "saas": "SaaS",
+      "demo": "Demo",
+      "arge": "Ar-Ge",
+      "concept": "Konsept"
+    }
+  },
+  "about_page": {
+    "pageTitle": "Hakkımızda",
+    "pageDescription": "Endijital'in hikayesi, misyonumuz ve dijital dönüşüm vizyonumuz.",
+    "story": {
+      "title": "Hikayemiz",
+      "paragraphs": [
+        "Endijital, 2024 yılında Next.js ve modern web teknolojilerine olan tutkumuzla kuruldu. Amacımız, geleneksel web geliştirme yaklaşımlarını sorgulayarak, işletmelerin gerçek potansiyellerine ulaşmalarını sağlayacak dijital ürünler inşa etmekti.",
+        "Cloudflare Edge altyapısı ile tanıştığımızda, web'in geleceğinin edge-first mimaride olduğunu gördük. Dünyanın her noktasında milisaniyeler içinde yüklenen, güvenli ve ölçeklenebilir web siteleri, sadece bir seçenek değil, bir zorunluluk haline geldi.",
+        "Bugün, Next.js 15, React 19 ve Cloudflare teknolojileri ile donatılmış ekibimizle, işletmelerin dijital dönüşüm yolculuklarında yanlarında oluyoruz. Her projede performans, güvenlik ve kullanıcı deneyimini ön planda tutarak, uzun vadeli başarıya odaklanıyoruz."
+      ]
+    },
+    "mission": {
+      "title": "Misyonumuz",
+      "text": "Modern web teknolojileri ile işletmelerin dijital dünyada rekabet avantajı kazanmasını sağlamak. Performans odaklı, ölçeklenebilir ve güvenli dijital ürünler inşa ederek, müşterilerimizin büyümesine katkıda bulunmak."
+    },
+    "vision": {
+      "title": "Vizyonumuz",
+      "text": "Türkiye'nin önde gelen edge-first web geliştirme ajansı olmak. Next.js ve Cloudflare ekosisteminde öncü rol oynayarak, web'in geleceğini şekillendirmek."
+    },
+    "values": {
+      "title": "Değerlerimiz",
+      "items": [
+        {
+          "title": "Mükemmellik",
+          "description": "Her projede en yüksek kalite standartlarını hedefliyoruz. Kod kalitesi, performans ve kullanıcı deneyimi konusunda ödün vermiyoruz."
+        },
+        {
+          "title": "Şeffaflık",
+          "description": "Müşterilerimizle açık ve dürüst iletişim kuruyoruz. Proje süreçlerini, zorlukları ve başarıları şeffaflıkla paylaşıyoruz."
+        },
+        {
+          "title": "İnovasyon",
+          "description": "Sürekli öğreniyor ve en son teknolojileri takip ediyoruz. Modern araçlar ve metodolojiler ile müşterilerimize rekabet avantajı sağlıyoruz."
+        },
+        {
+          "title": "İşbirliği",
+          "description": "Müşterilerimizi iş ortağı olarak görüyoruz. Birlikte çalışarak, ortak hedeflere ulaşmak için sinerji yaratıyoruz."
+        }
+      ]
+    }
+  },
+  "not_found": {
+    "title": "404",
+    "subtitle": "Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa taşınmış veya silinmiş olabilir. Ana sayfaya dönün veya menüyü kullanarak istediğiniz sayfayı bulun.",
+    "backHome": "Ana Sayfaya Dön"
+  },
+  "api_responses": {
+    "success": "Mesajınız başarıyla gönderildi.",
+    "error_missing_fields": "Zorunlu alanlar eksik.",
+    "error_invalid_email": "Geçersiz e-posta adresi.",
+    "error_server": "Sunucu hatası oluştu.",
+    "error_rate_limit": "Çok fazla istek gönderdiniz. Lütfen daha sonra tekrar deneyin."
+  }
+}

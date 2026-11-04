@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Endijital OG Image Generator</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: #0f172a;
+      color: white;
+      padding: 32px;
+      margin: 0;
+    }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    .info {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 32px;
+      border-left: 4px solid #a855f7;
+    }
+    .info code {
+      background: #0f172a;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: #a855f7;
+      font-size: 13px;
+    }
+    .info ol { margin: 12px 0 0; padding-left: 20px; }
+    .info li { margin: 6px 0; }
+    .canvas-container {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .canvas-container h2 { margin-top: 0; font-size: 18px; }
+    canvas {
+      display: block;
+      margin: 0 auto 16px;
+      border: 1px solid #334155;
+      max-width: 100%;
+      height: auto;
+    }
+    .small-canvas {
+      image-rendering: pixelated;
+    }
+    button {
+      background: linear-gradient(to right, #3b82f6, #a855f7, #ec4899);
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 4px;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.05); }
+    .size-label {
+      display: inline-block;
+      background: #0f172a;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Endijital Görsel Üretici</h1>
+  <p style="color: #94a3b8;">Aşağıdaki 4 görseli üretip projeye ekleyeceğiz.</p>
+
+  <div class="info">
+    <strong>📁 Dosyaları nereye kaydedeceksiniz:</strong>
+    <ol>
+      <li><code>opengraph-image.png</code> → <code>src/app/opengraph-image.png</code></li>
+      <li><code>twitter-image.png</code> → <code>src/app/twitter-image.png</code></li>
+      <li><code>apple-icon.png</code> → <code>src/app/apple-icon.png</code></li>
+      <li><code>icon.png</code> → <code>src/app/icon.png</code></li>
+    </ol>
+    <p style="margin: 12px 0 0; color: #cbd5e1; font-size: 14px;">
+      ℹ️ Bu dosyalar <code>src/app/</code> içine konulunca Next.js otomatik olarak <code>&lt;meta property="og:image"&gt;</code>, <code>&lt;link rel="apple-touch-icon"&gt;</code> gibi tüm meta etiketlerini üretir. Manuel metadata yazmaya gerek kalmaz.
+    </p>
+  </div>
+
+  <!-- OG Image -->
+  <div class="canvas-container">
+    <h2>🌐 OG / Twitter Image <span class="size-label">1200 × 630</span></h2>
+    <canvas id="og" width="1200" height="630"></canvas>
+    <div style="text-align: center;">
+      <button onclick="download('og', 'opengraph-image.png')">💾 opengraph-image.png</button>
+      <button onclick="download('og', 'twitter-image.png')">💾 twitter-image.png</button>
+    </div>
+  </div>
+
+  <!-- Apple Touch Icon -->
+  <div class="canvas-container">
+    <h2>📱 Apple Touch Icon <span class="size-label">180 × 180</span></h2>
+    <canvas id="apple" width="180" height="180"></canvas>
+    <div style="text-align: center;">
+      <button onclick="download('apple', 'apple-icon.png')">💾 apple-icon.png</button>
+    </div>
+  </div>
+
+  <!-- Favicon PNG -->
+  <div class="canvas-container">
+    <h2>🔖 Favicon PNG <span class="size-label">32 × 32</span></h2>
+    <canvas id="icon" width="32" height="32" class="small-canvas" style="width: 160px; height: 160px;"></canvas>
+    <div style="text-align: center;">
+      <button onclick="download('icon', 'icon.png')">💾 icon.png</button>
+    </div>
+  </div>
+
+  <script>
+    // ============================================
+    // DRAWING HELPERS
+    // ============================================
+    function drawGradientBg(ctx, w, h) {
+      const gradient = ctx.createLinearGradient(0, 0, w, h);
+      gradient.addColorStop(0, '#0f172a');
+      gradient.addColorStop(0.5, '#1e293b');
+      gradient.addColorStop(1, '#0f172a');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    function drawOrbs(ctx, w, h) {
+      // Blue orb
+      const blueGrad = ctx.createRadialGradient(w*0.15, h*0.25, 0, w*0.15, h*0.25, w*0.25);
+      blueGrad.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
+      blueGrad.addColorStop(1, 'rgba(59, 130, 246, 0)');
+      ctx.fillStyle = blueGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Pink orb
+      const pinkGrad = ctx.createRadialGradient(w*0.85, h*0.75, 0, w*0.85, h*0.75, w*0.25);
+      pinkGrad.addColorStop(0, 'rgba(236, 72, 153, 0.3)');
+      pinkGrad.addColorStop(1, 'rgba(236, 72, 153, 0)');
+      ctx.fillStyle = pinkGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Purple orb (center)
+      const purpleGrad = ctx.createRadialGradient(w*0.5, h*0.5, 0, w*0.5, h*0.5, w*0.3);
+      purpleGrad.addColorStop(0, 'rgba(168, 85, 247, 0.15)');
+      purpleGrad.addColorStop(1, 'rgba(168, 85, 247, 0)');
+      ctx.fillStyle = purpleGrad;
+      ctx.fillRect(0, 0, w, h);
+    }
+
+    function drawLogo(ctx, x, y, size) {
+      const gradient = ctx.createLinearGradient(x, y, x + size, y + size);
+      gradient.addColorStop(0, '#3b82f6');
+      gradient.addColorStop(0.5, '#a855f7');
+      gradient.addColorStop(1, '#ec4899');
+
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      const radius = size * 0.22;
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + size - radius, y);
+      ctx.quadraticCurveTo(x + size, y, x + size, y + radius);
+      ctx.lineTo(x + size, y + size - radius);
+      ctx.quadraticCurveTo(x + size, y + size, x + size - radius, y + size);
+      ctx.lineTo(x + radius, y + size);
+      ctx.quadraticCurveTo(x, y + size, x, y + size - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.fill();
+
+      // Neon glow
+      ctx.shadowColor = 'rgba(168, 85, 247, 0.8)';
+      ctx.shadowBlur = size * 0.15;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.fillStyle = 'white';
+      ctx.font = `bold ${size * 0.55}px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('E', x + size/2, y + size/2);
+    }
+
+    // ============================================
+    // 1. OG IMAGE (1200 x 630)
+    // ============================================
+    const og = document.getElementById('og').getContext('2d');
+    drawGradientBg(og, 1200, 630);
+    drawOrbs(og, 1200, 630);
+
+    // Logo
+    drawLogo(og, 80, 80, 110);
+
+    // Brand name
+    og.fillStyle = 'white';
+    og.font = 'bold 56px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+    og.textAlign = 'left';
+    og.fillText('Endijital', 210, 155);
+
+    // Tagline
+    og.font = '24px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+    og.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    og.fillText('Geleceğin Web Mimarisi', 210, 190);
+
+    // Main heading
+    og.font = 'bold 54px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+    og.fillStyle = 'white';
+    og.fillText('Yüksek Performanslı', 80, 360);
+    og.fillText('Dijital Ürünler', 80, 430);
+
+    // Gradient accent line
+    const lineGrad = og.createLinearGradient(80, 470, 480, 470);
+    lineGrad.addColorStop(0, '#3b82f6');
+    lineGrad.addColorStop(0.5, '#a855f7');
+    lineGrad.addColorStop(1, '#ec4899');
+    og.fillStyle = lineGrad;
+    og.fillRect(80, 470, 400, 4);
+
+    // Bottom tags
+    og.font = '22px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif';
+    og.fillStyle = 'rgba(255, 255, 255, 0.7)';
+    og.fillText('Next.js 15  ·  Cloudflare Edge  ·  SEO Optimizasyonu', 80, 540);
+
+    // ============================================
+    // 2. APPLE TOUCH ICON (180 x 180)
+    // ============================================
+    const apple = document.getElementById('apple').getContext('2d');
+    drawGradientBg(apple, 180, 180);
+    drawOrbs(apple, 180, 180);
+    drawLogo(apple, 30, 30, 120);
+
+    // ============================================
+    // 3. FAVICON PNG (32 x 32)
+    // ============================================
+    const icon = document.getElementById('icon').getContext('2d');
+    drawGradientBg(icon, 32, 32);
+    const g = icon.createLinearGradient(0, 0, 32, 32);
+    g.addColorStop(0, '#3b82f6');
+    g.addColorStop(0.5, '#a855f7');
+    g.addColorStop(1, '#ec4899');
+    icon.fillStyle = g;
+    icon.beginPath();
+    icon.moveTo(7, 2);
+    icon.lineTo(25, 2);
+    icon.quadraticCurveTo(30, 2, 30, 7);
+    icon.lineTo(30, 25);
+    icon.quadraticCurveTo(30, 30, 25, 30);
+    icon.lineTo(7, 30);
+    icon.quadraticCurveTo(2, 30, 2, 25);
+    icon.lineTo(2, 7);
+    icon.quadraticCurveTo(2, 2, 7, 2);
+    icon.fill();
+    icon.fillStyle = 'white';
+    icon.font = 'bold 20px system-ui';
+    icon.textAlign = 'center';
+    icon.textBaseline = 'middle';
+    icon.fillText('E', 16, 16);
+
+    // ============================================
+    // DOWNLOAD FUNCTION
+    // ============================================
+    function download(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }, 'image/png');
+    }
+  </script>
+</body>
+</html>

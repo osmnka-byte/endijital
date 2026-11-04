@@ -1,0 +1,42 @@
+# wrangler.toml
+# Cloudflare Pages yapılandırma dosyası
+# https://developers.cloudflare.com/pages/functions/wrangler-configuration/
+
+name = "endijital"
+compatibility_date = "2026-01-01"
+
+# Next.js statik export çıktısı
+pages_build_output_dir = "./out"
+
+# Environment Variables (non-secret)
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://endijital.com"
+CONTACT_EMAIL = "hello@endijital.com"
+
+# Production environment
+[env.production]
+name = "endijital"
+routes = [
+  { pattern = "endijital.com", custom_domain = true },
+  { pattern = "www.endijital.com", custom_domain = true }
+]
+
+[env.production.vars]
+NEXT_PUBLIC_SITE_URL = "https://endijital.com"
+CONTACT_EMAIL = "hello@endijital.com"
+
+# Preview/Staging environment
+[env.preview]
+name = "endijital-preview"
+
+[env.preview.vars]
+NEXT_PUBLIC_SITE_URL = "https://preview.endijital.com"
+CONTACT_EMAIL = "hello@endijital.com"
+
+# KV Namespace (opsiyonel - form submission'ları saklamak için)
+# [[kv_namespaces]]
+# binding = "CONTACT_SUBMISSIONS"
+# id = "your-kv-namespace-id"
+
+# Secrets (wrangler secret put ile eklenir, dosyaya yazılmaz)
+# EMAIL_SERVICE_API_KEY -> wrangler secret put EMAIL_SERVICE_API_KEY

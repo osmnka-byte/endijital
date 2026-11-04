@@ -1,0 +1,514 @@
+{
+  "meta": {
+    "siteName": "Endijital",
+    "siteDescription": "High-performance digital products built with Next.js 15, Cloudflare Edge and modern web technologies.",
+    "siteUrl": "https://endijital.com"
+  },
+  "nav": {
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact",
+    "startProject": "Start a Project"
+  },
+  "hero": {
+    "badge": "🚀 Next-Gen Web Architecture & Cloudflare Edge Infrastructure",
+    "title": "Beyond Traditional Websites: High-Performance Digital Products",
+    "subtitle": "We build end-to-end modern web solutions that help businesses and e-commerce brands scale fast in the digital world, build scalable infrastructures, and gain operational efficiency.",
+    "cta": {
+      "primary": "Start Your Project",
+      "secondary": "View Our Portfolio"
+    }
+  },
+  "services": {
+    "sectionTitle": "Our Expertise",
+    "sectionDescription": "Comprehensive digital solutions powered by modern web technologies to take your business to the next level.",
+    "nextjs": {
+      "title": "Next.js 15 Architecture",
+      "description": "We build SEO-friendly, ultra-fast, and scalable modern web applications powered by App Router, React 19, Server Components, and Streaming."
+    },
+    "cloudflare": {
+      "title": "Cloudflare Edge & Security",
+      "description": "We build edge-first infrastructures that load in milliseconds worldwide and are protected against DDoS and bot attacks through Cloudflare Pages, Workers, and WAF integration."
+    },
+    "ecommerce": {
+      "title": "E-Commerce Solutions",
+      "description": "We integrate Shopify, Medusa, and custom payment gateways through headless e-commerce architecture, delivering high-conversion sales platforms with optimized checkout flows."
+    },
+    "performance": {
+      "title": "Performance & SEO Optimization",
+      "description": "We deliver technical SEO infrastructure with 100% PageSpeed scores, Zero-CLS, Core Web Vitals compliance, and structured data (Schema.org) to rank at the top of search engines."
+    }
+  },
+  "portfolio": {
+    "sectionTitle": "Our Products & Projects",
+    "sectionDescription": "From our own SaaS products to client projects and R&D work — a selection of what we've built with modern web technologies. Projects under NDA are not shown in this showcase.",
+    "viewProject": "View Project",
+    "projects": [
+      {
+        "title": "Kâr Dedektörü",
+        "slug": "kar-dedektoru",
+        "badge": "In Development",
+        "category": "saas",
+        "description": "An AI-assisted profitability analytics platform that reveals commissions, shipping fees and service costs for Trendyol and Hepsiburada sellers.",
+        "image": "/images/portfolio/kar-dedektoru.png",
+        "tags": ["Next.js 16", "TypeScript", "Tailwind CSS", "Turbopack", "Lucide React"]
+      },
+      {
+        "title": "Entegrematik",
+        "slug": "entegrematik",
+        "badge": "In Development",
+        "category": "saas",
+        "description": "A multi-marketplace integration platform that manages product listing, orders and invoicing from a single panel.",
+        "image": "/images/portfolio/entegrematik.png",
+        "tags": ["Next.js App Router", "TypeScript", "Tailwind CSS", "Static Export", "Turbopack"]
+      },
+      {
+        "title": "TechNova SaaS Platform",
+        "slug": "technova",
+        "badge": "Demo",
+        "category": "demo",
+        "description": "A technical demo showcasing edge-first architecture for high-traffic B2B SaaS scenarios.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Next.js 15", "Cloudflare Workers", "TypeScript", "PostgreSQL"]
+      },
+      {
+        "title": "LuxeCommerce E-Commerce",
+        "slug": "luxecommerce",
+        "badge": "Demo",
+        "category": "demo",
+        "description": "A demo storefront presenting headless commerce flows (catalog, cart, checkout) end to end.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Shopify", "Next.js", "Sanity CMS", "Stripe"]
+      },
+      {
+        "title": "FinEdge Dashboard",
+        "slug": "finedge",
+        "badge": "R&D",
+        "category": "arge",
+        "description": "An R&D dashboard exploring real-time financial data visualization techniques.",
+        "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["React 19", "WebSocket", "Chart.js", "Cloudflare Pages"]
+      },
+      {
+        "title": "GreenEnergy Corporate",
+        "slug": "greenenergy",
+        "badge": "Demo",
+        "category": "demo",
+        "description": "A demo showcasing corporate site architecture and technical SEO practices (static export, Zero-CLS).",
+        "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Next.js", "Cloudflare Pages", "MDX", "SEO"]
+      },
+      {
+        "title": "EdgePerf Lab",
+        "slug": "edgeperf-lab",
+        "badge": "R&D",
+        "category": "arge",
+        "description": "Our internal performance laboratory where we develop Core Web Vitals and Lighthouse optimization techniques.",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Next.js", "Cloudflare Pages", "Lighthouse", "Web Vitals"]
+      },
+      {
+        "title": "Luxe Marketplace UI",
+        "slug": "luxe-marketplace-ui",
+        "badge": "Concept",
+        "category": "concept",
+        "description": "A dark-mode UI/UX concept study designed for premium e-commerce experiences.",
+        "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Figma", "Tailwind CSS", "Design Tokens", "WCAG 2.1"]
+      }
+    ]
+  },
+  "portfolio_detail": {
+    "backToPortfolio": "Back to Portfolio",
+    "projectOverview": "Project Overview",
+    "technologies": "Technologies Used",
+    "features": "Key Features",
+    "screenshots": "Screenshots",
+    "visitWebsite": "Visit Website",
+    "projects": {
+      "kar-dedektoru": {
+        "title": "Kâr Dedektörü",
+        "subtitle": "Profitability Analytics Platform for Marketplace Sellers",
+        "badge": "In Development",
+        "description": "An AI-assisted profitability analytics platform that reveals commissions, shipping fees and service costs for Trendyol and Hepsiburada sellers.",
+        "longDescription": "Kâr Dedektörü is a SaaS platform we are building to expose the hidden gap between gross revenue and true net profit for marketplace sellers. It calculates commission rates, variable shipping tariffs, service fees and VAT deductions on a per-order basis to provide product-level profitability visibility. The platform is currently in closed beta.",
+        "image": "/images/portfolio/kar-dedektoru.png",
+        "screenshots": [],
+        "technologies": ["Next.js 16", "TypeScript", "Turbopack", "Tailwind CSS", "Lucide React", "Geist & Geist Mono"],
+        "features": [
+          "Per-order net profit calculation",
+          "Hidden deduction and loss alerts",
+          "Trendyol & Hepsiburada data integration",
+          "12-month profit/loss trend analysis",
+          "SKU-level profitability reports"
+        ],
+        "url": "",
+        "results": {
+          "model": "SaaS",
+          "scope": "2 marketplaces",
+          "status": "Closed Beta"
+        }
+      },
+      "entegrematik": {
+        "title": "Entegrematik",
+        "subtitle": "Multi-Marketplace Integration & Operations Platform",
+        "badge": "In Development",
+        "description": "A multi-marketplace integration platform that manages product listing, orders and invoicing from a single panel.",
+        "longDescription": "Entegrematik enables e-commerce sellers to manage products, orders and invoices across multiple marketplaces from a single screen. Its control panel summarizes daily revenue, pending orders and integration health to reduce operational load. The next-generation interface is currently in development.",
+        "image": "/images/portfolio/entegrematik.png",
+        "screenshots": [],
+        "technologies": ["Next.js App Router", "React", "TypeScript", "Static Export (SSG)", "Turbopack", "Tailwind CSS"],
+        "features": [
+          "Product listing across multiple marketplaces",
+          "Order management from a single panel",
+          "Automated invoicing workflows",
+          "Daily revenue and order dashboard",
+          "Integration health monitoring"
+        ],
+        "url": "https://entegrematik.com",
+        "results": {
+          "model": "SaaS",
+          "scope": "Multi-marketplace",
+          "status": "New version in development"
+        }
+      },
+      "technova": {
+        "title": "TechNova SaaS Platform",
+        "subtitle": "Edge-First B2B SaaS Architecture Showcase",
+        "badge": "Demo",
+        "description": "A technical demo showcasing edge-first architecture for high-traffic B2B SaaS scenarios.",
+        "longDescription": "TechNova is a demo project built to demonstrate the limits of edge-first architecture in high-traffic B2B SaaS scenarios; there is no real client engagement. It showcases real-time data synchronization, multi-tenant structure and edge-cached API responses using Next.js 15 App Router and Cloudflare Workers.",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js 15", "Cloudflare Workers", "TypeScript", "PostgreSQL", "Redis", "WebSocket"],
+        "features": [
+          "Multi-tenant architecture patterns",
+          "Real-time data synchronization",
+          "Edge-cached API responses",
+          "Auto-scaling scenarios",
+          "SSO and RBAC security design"
+        ],
+        "url": "",
+        "results": {
+          "type": "Demo",
+          "focus": "Edge architecture",
+          "stack": "Next.js 15 + Workers"
+        }
+      },
+      "luxecommerce": {
+        "title": "LuxeCommerce E-Commerce",
+        "subtitle": "Headless Storefront Demo Study",
+        "badge": "Demo",
+        "description": "A demo storefront presenting headless commerce flows (catalog, cart, checkout) end to end.",
+        "longDescription": "LuxeCommerce is a demo storefront study presenting headless commerce flows end to end; there is no real client engagement. Catalog, cart and checkout flows are optimized with Next.js 15 static export, and the payment layer is modeled on a Stripe-like sandbox.",
+        "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js 15", "Shopify Storefront API", "Sanity CMS", "Stripe", "Tailwind CSS"],
+        "features": [
+          "Headless storefront architecture",
+          "CMS-driven content management",
+          "Sandbox payment flow",
+          "Multi-language and currency design",
+          "Conversion-focused checkout design"
+        ],
+        "url": "",
+        "results": {
+          "type": "Demo",
+          "focus": "Headless commerce",
+          "stack": "Next.js + Stripe"
+        }
+      },
+      "finedge": {
+        "title": "FinEdge Dashboard",
+        "subtitle": "Real-Time Data Visualization R&D",
+        "badge": "R&D",
+        "description": "An R&D dashboard exploring real-time financial data visualization techniques.",
+        "longDescription": "FinEdge is an R&D study exploring real-time financial data visualization techniques. WebSocket-based data streams, edge-cached charts and the impact of high-frequency updates on Core Web Vitals were measured in this project.",
+        "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["React 19", "Cloudflare Pages", "WebSocket", "Chart.js", "Durable Objects"],
+        "features": [
+          "WebSocket data stream prototype",
+          "Customizable widget architecture",
+          "High-frequency chart render tests",
+          "CLS impact measurement",
+          "Edge cache scenarios"
+        ],
+        "url": "",
+        "results": {
+          "type": "R&D",
+          "focus": "Real-time data",
+          "measurement": "<100ms updates"
+        }
+      },
+      "greenenergy": {
+        "title": "GreenEnergy Corporate",
+        "subtitle": "Corporate Architecture & Technical SEO Showcase",
+        "badge": "Demo",
+        "description": "A demo showcasing corporate site architecture and technical SEO practices (static export, Zero-CLS).",
+        "longDescription": "GreenEnergy is a demo project built to showcase corporate website architecture and technical SEO practices (static export, Zero-CLS, structured data); there is no real client engagement.",
+        "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js 15", "Cloudflare Pages", "MDX", "Schema.org", "Tailwind CSS"],
+        "features": [
+          "100% static export setup",
+          "Zero-CLS page architecture",
+          "MDX content infrastructure",
+          "Schema.org structured data",
+          "Multi-language (TR/EN) setup"
+        ],
+        "url": "",
+        "results": {
+          "type": "Demo",
+          "focus": "Technical SEO",
+          "lighthouse": "100/100"
+        }
+      },
+      "edgeperf-lab": {
+        "title": "EdgePerf Lab",
+        "subtitle": "Internal Core Web Vitals Optimization Laboratory",
+        "badge": "R&D",
+        "description": "Our internal performance laboratory where we develop Core Web Vitals and Lighthouse optimization techniques.",
+        "longDescription": "EdgePerf Lab is an ongoing R&D initiative within our agency. We test and measure techniques for improving LCP, CLS and INP metrics (critical CSS, font loading strategies, image prioritization, edge caching) in this laboratory. The 100/100 Lighthouse scores on this website are a direct result of this work.",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Next.js", "Cloudflare Pages", "Lighthouse", "Web Vitals"],
+        "features": [
+          "LCP / CLS / INP optimization experiments",
+          "Critical CSS and font loading strategies",
+          "Image prioritization tests",
+          "Edge caching scenarios"
+        ],
+        "url": "",
+        "results": {
+          "lighthouse": "100/100",
+          "lcp": "0.7s",
+          "cls": "0"
+        }
+      },
+      "luxe-marketplace-ui": {
+        "title": "Luxe Marketplace UI",
+        "subtitle": "Premium E-Commerce UI/UX Concept Study",
+        "badge": "Concept",
+        "description": "A dark-mode UI/UX concept study designed for premium e-commerce experiences.",
+        "longDescription": "Luxe Marketplace UI is a UI/UX concept study produced purely for research and design exploration, without any client scope. Glassmorphic surfaces, neon accents and mobile-first component systems were prototyped in this study.",
+        "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+        "screenshots": [],
+        "technologies": ["Figma", "Tailwind CSS", "Design Tokens", "WCAG 2.1"],
+        "features": [
+          "Dark-mode design system",
+          "Glassmorphic component library",
+          "Mobile-first interface flows",
+          "Accessibility (WCAG) checks"
+        ],
+        "url": "",
+        "results": {
+          "type": "Concept",
+          "scope": "UI/UX",
+          "tools": "Figma + Tailwind"
+        }
+      }
+    }
+  },
+  "about": {
+    "sectionTitle": "Why Endijital?",
+    "description": "We don't just build websites; we build your business's digital future. We make a difference with modern technologies, edge-first architecture, and a performance-focused approach.",
+    "stats": [
+      { "label": "Delivered Projects", "value": "20+" },
+      { "label": "SaaS Platforms", "value": "5+" },
+      { "label": "Lighthouse Score", "value": "100/100" },
+      { "label": "Average LCP", "value": "0.7s" }
+    ],
+    "techStack": {
+      "title": "Our Tech Stack",
+      "technologies": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Cloudflare", "Node.js", "PostgreSQL", "GraphQL"]
+    }
+  },
+  "cta": {
+    "title": "Ready to Bring Your Project to Life?",
+    "description": "Let's take your business to the next level with modern web technologies. Contact us now for a free discovery call.",
+    "buttonText": "Schedule Free Consultation"
+  },
+  "footer": {
+    "brand": {
+      "description": "Agency developing high-performance digital products with Next.js 15, Cloudflare Edge and modern web technologies."
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "links": [
+        { "label": "Home", "href": "/" },
+        { "label": "Services", "href": "/services" },
+        { "label": "Portfolio", "href": "/portfolio" },
+        { "label": "About", "href": "/about" },
+        { "label": "Contact", "href": "/contact" }
+      ]
+    },
+    "services": {
+      "title": "Our Services",
+      "links": [
+        { "label": "Next.js Development", "href": "/services" },
+        { "label": "Cloudflare Edge", "href": "/services" },
+        { "label": "E-Commerce Solutions", "href": "/services" },
+        { "label": "SEO Optimization", "href": "/services" }
+      ]
+    },
+    "social": {
+      "title": "Social Media",
+      "links": [
+        { "label": "LinkedIn", "href": "https://linkedin.com", "icon": "linkedin" },
+        { "label": "Twitter", "href": "https://twitter.com", "icon": "twitter" },
+        { "label": "GitHub", "href": "https://github.com", "icon": "github" },
+        { "label": "Instagram", "href": "https://instagram.com", "icon": "instagram" }
+      ]
+    },
+    "copyright": "© 2026 Endijital. All rights reserved.",
+    "madeWith": "Built with ❤️ using Next.js 15 & Cloudflare Edge"
+  },
+  "contact": {
+    "pageTitle": "Get in Touch",
+    "pageDescription": "Ready to bring your project to life? Reach out to us, and we'll get back to you within 24 hours.",
+    "info": {
+      "email": {
+        "label": "Email",
+        "value": "info@endijital.com",
+        "href": "mailto:info@endijital.com"
+      },
+      "location": {
+        "label": "Address",
+        "value": "Kurtköy Mahallesi, Dr. Gürol Başaran Sokak, No: 1, Pendik / Istanbul",
+        "href": "https://www.google.com/maps/search/?api=1&query=Kurtk%C3%B6y%20Mahallesi%2C%20Dr.%20G%C3%BCrol%20Ba%C5%9Far%20Sokak%20No%3A%201%2C%20Pendik%20%2F%20%C4%B0stanbul"
+      },
+      "hours": {
+        "label": "Working Hours",
+        "value": "Mon-Fri: 09:00 - 18:00",
+        "href": "#"
+      }
+    },
+    "form": {
+      "name": { "label": "Full Name", "placeholder": "Enter your full name" },
+      "email": { "label": "Email", "placeholder": "example@email.com" },
+      "company": { "label": "Company (Optional)", "placeholder": "Your company name" },
+      "message": { "label": "Project Details", "placeholder": "Tell us a bit about your project..." },
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully! We'll get back to you within 24 hours.",
+      "error": "An error occurred. Please try again later."
+    }
+  },
+  "services_page": {
+    "pageTitle": "Our Services",
+    "pageDescription": "Comprehensive digital solutions powered by modern web technologies to take your business to the next level.",
+    "detailed": [
+      {
+        "title": "Next.js 15 Development",
+        "description": "Ultra-fast, SEO-friendly web applications with App Router, React Server Components, Streaming, and Partial Prerendering.",
+        "features": [
+          "App Router and React 19 integration",
+          "Server Components and Streaming",
+          "Incremental Static Regeneration (ISR)",
+          "Edge Runtime optimization",
+          "TypeScript type safety"
+        ]
+      },
+      {
+        "title": "Cloudflare Edge Infrastructure",
+        "description": "Edge-cached, DDoS-protected websites that load in milliseconds across 200+ global locations.",
+        "features": [
+          "Cloudflare Pages static hosting",
+          "Workers serverless functions",
+          "WAF and DDoS protection",
+          "Automatic SSL/TLS configuration",
+          "Real User Monitoring (RUM)"
+        ]
+      },
+      {
+        "title": "Headless E-Commerce",
+        "description": "High-conversion, scalable e-commerce platforms with Shopify, Medusa, or custom backends.",
+        "features": [
+          "Shopify Storefront API integration",
+          "Medusa.js custom backend",
+          "Stripe and payment gateway integration",
+          "Cart and checkout optimization",
+          "Inventory and order management"
+        ]
+      },
+      {
+        "title": "Performance & SEO",
+        "description": "100% PageSpeed scores, Core Web Vitals compliance, and top search engine rankings.",
+        "features": [
+          "Lighthouse and PageSpeed optimization",
+          "Core Web Vitals (LCP, FID, CLS)",
+          "Schema.org structured data",
+          "XML Sitemap and robots.txt",
+          "Canonical and hreflang tags"
+        ]
+      }
+    ]
+  },
+  "portfolio_page": {
+    "pageTitle": "Our Portfolio",
+    "pageDescription": "From our own SaaS products to client projects and R&D work — a selection of what we've built. Projects under NDA are not shown in this showcase.",
+    "filter": {
+      "all": "All",
+      "saas": "SaaS",
+      "demo": "Demo",
+      "arge": "R&D",
+      "concept": "Concept"
+    }
+  },
+  "about_page": {
+    "pageTitle": "About Us",
+    "pageDescription": "Endijital's story, our mission, and our digital transformation vision.",
+    "story": {
+      "title": "Our Story",
+      "paragraphs": [
+        "Endijital was founded in 2024 with our passion for Next.js and modern web technologies. Our goal was to build digital products that would help businesses reach their true potential by questioning traditional web development approaches.",
+        "When we discovered Cloudflare Edge infrastructure, we saw that the future of the web lies in edge-first architecture. Websites that load in milliseconds anywhere in the world, are secure and scalable, have become not just an option, but a necessity.",
+        "Today, with our team equipped with Next.js 15, React 19, and Cloudflare technologies, we accompany businesses on their digital transformation journey. In every project, we focus on long-term success by prioritizing performance, security, and user experience."
+      ]
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "To help businesses gain competitive advantage in the digital world with modern web technologies. To contribute to our clients' growth by building performance-focused, scalable, and secure digital products."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "To become Turkey's leading edge-first web development agency. To shape the future of the web by playing a pioneering role in the Next.js and Cloudflare ecosystem."
+    },
+    "values": {
+      "title": "Our Values",
+      "items": [
+        {
+          "title": "Excellence",
+          "description": "We aim for the highest quality standards in every project. We never compromise on code quality, performance, and user experience."
+        },
+        {
+          "title": "Transparency",
+          "description": "We maintain open and honest communication with our clients. We share project processes, challenges, and successes with transparency."
+        },
+        {
+          "title": "Innovation",
+          "description": "We continuously learn and follow the latest technologies. We provide our clients with competitive advantage through modern tools and methodologies."
+        },
+        {
+          "title": "Collaboration",
+          "description": "We see our clients as partners. We work together to create synergy and achieve common goals."
+        }
+      ]
+    }
+  },
+  "not_found": {
+    "title": "404",
+    "subtitle": "Page Not Found",
+    "description": "The page you're looking for may have been moved or deleted. Return to the homepage or use the menu to find what you need.",
+    "backHome": "Back to Home"
+  },
+  "api_responses": {
+    "success": "Your message has been sent successfully.",
+    "error_missing_fields": "Required fields are missing.",
+    "error_invalid_email": "Invalid email address.",
+    "error_server": "Server error occurred.",
+    "error_rate_limit": "Too many requests. Please try again later."
+  }
+}
