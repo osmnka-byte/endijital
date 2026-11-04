@@ -22,23 +22,57 @@
   },
   "services": {
     "sectionTitle": "Uzmanlık Alanlarımız",
-    "sectionDescription": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak kapsamlı dijital çözümler.",
-    "nextjs": {
-      "title": "Next.js 15 Mimarisi",
-      "description": "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları geliştiriyoruz."
-    },
-    "cloudflare": {
-      "title": "Cloudflare Edge & Güvenlik",
-      "description": "Cloudflare Pages, Workers ve WAF entegrasyonu ile dünyanın her noktasında milisaniyeler içinde yüklenen, DDoS ve bot saldırılarına karşı korunaklı edge-first altyapılar kuruyoruz."
-    },
-    "ecommerce": {
-      "title": "E-Ticaret Çözümleri",
-      "description": "Headless e-ticaret mimarisi ile Shopify, Medusa ve özel ödeme altyapılarını entegre ediyor, dönüşüm oranı yüksek ve ödeme akışları optimize edilmiş satış platformları inşa ediyoruz."
-    },
-    "performance": {
-      "title": "Performans & SEO Optimizasyonu",
-      "description": "%100 PageSpeed skorları, Zero-CLS, Core Web Vitals uyumluluğu ve yapılandırılmış veri (Schema.org) ile arama motorlarında zirveye oynayan teknik SEO altyapısı sunuyoruz."
-    }
+    "sectionDescription": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak 8 farklı alanda profesyonel dijital çözümler sunuyoruz.",
+    "services": [
+      {
+        "slug": "nextjs-mimarisi",
+        "icon": "Code",
+        "title": "Next.js 15 Mimarisi",
+        "description": "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları geliştiriyoruz."
+      },
+      {
+        "slug": "cloudflare-edge",
+        "icon": "Shield",
+        "title": "Cloudflare Edge & Güvenlik",
+        "description": "Cloudflare Pages, Workers ve WAF entegrasyonu ile dünyanın her noktasında milisaniyeler içinde yüklenen, DDoS ve bot saldırılarına karşı korunaklı edge-first altyapılar kuruyoruz."
+      },
+      {
+        "slug": "e-ticaret",
+        "icon": "ShoppingCart",
+        "title": "E-Ticaret Çözümleri",
+        "description": "Headless e-ticaret mimarisi ile Shopify, Medusa ve özel ödeme altyapılarını entegre ediyor, dönüşüm oranı yüksek ve ödeme akışları optimize edilmiş satış platformları inşa ediyoruz."
+      },
+      {
+        "slug": "performans-seo",
+        "icon": "Zap",
+        "title": "Performans & SEO Optimizasyonu",
+        "description": "%100 PageSpeed skorları, Zero-CLS, Core Web Vitals uyumluluğu ve yapılandırılmış veri (Schema.org) ile arama motorlarında zirveye oynayan teknik SEO altyapısı sunuyoruz."
+      },
+      {
+        "slug": "saas-dashboard",
+        "icon": "LayoutDashboard",
+        "title": "SaaS Dashboard Geliştirme",
+        "description": "B2B SaaS ürünleri için karmaşık veri görselleştirme, gerçek zamanlı güncellemeler ve kullanıcı dostu yönetim panelleri geliştiriyoruz."
+      },
+      {
+        "slug": "headless-cms",
+        "icon": "FileText",
+        "title": "Headless CMS Entegrasyonu",
+        "description": "Sanity.io ve Payload CMS ile içerik ekibinizin kolayca yönetebileceği, geliştiricilerin esnekçe entegre edebileceği modern içerik yönetim altyapıları kuruyoruz."
+      },
+      {
+        "slug": "api-gelistirme",
+        "icon": "Plug",
+        "title": "API Geliştirme & Entegrasyon",
+        "description": "RESTful ve GraphQL API'ler geliştiriyor, ödeme sistemleri, kargo firmaları ve CRM yazılımları gibi üçüncü parti servisleri projelerinize güvenle entegre ediyoruz."
+      },
+      {
+        "slug": "veritabani-mimarisi",
+        "icon": "Database",
+        "title": "Veritabanı & Backend Mimarisi",
+        "description": "PostgreSQL ve Drizzle ORM ile tip güvenli, performanslı ve bakımı kolay veritabanı mimarileri tasarlıyor, verilerinizi güvenli ve verimli bir şekilde yönetiyoruz."
+      }
+    ]
   },
   "portfolio": {
     "sectionTitle": "Ürünlerimiz ve Projelerimiz",
@@ -350,7 +384,11 @@
         { "label": "Next.js Geliştirme", "href": "/services" },
         { "label": "Cloudflare Edge", "href": "/services" },
         { "label": "E-Ticaret Çözümleri", "href": "/services" },
-        { "label": "SEO Optimizasyonu", "href": "/services" }
+        { "label": "SEO Optimizasyonu", "href": "/services" },
+        { "label": "SaaS Dashboard", "href": "/services" },
+        { "label": "Headless CMS", "href": "/services" },
+        { "label": "API Geliştirme", "href": "/services" },
+        { "label": "Veritabanı Mimarisi", "href": "/services" }
       ]
     },
     "social": {
@@ -398,11 +436,11 @@
   },
   "services_page": {
     "pageTitle": "Hizmetlerimiz",
-    "pageDescription": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak kapsamlı dijital çözümler.",
+    "pageDescription": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak 8 farklı alanda profesyonel dijital çözümler.",
     "detailed": [
       {
-        "title": "Next.js 15 Geliştirme",
-        "description": "App Router, React Server Components, Streaming ve Partial Prerendering ile ultra hızlı, SEO dostu web uygulamaları.",
+        "title": "Next.js 15 Mimarisi",
+        "description": "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları geliştiriyoruz.",
         "features": [
           "App Router ve React 19 entegrasyonu",
           "Server Components ve Streaming",
@@ -412,8 +450,8 @@
         ]
       },
       {
-        "title": "Cloudflare Edge Altyapısı",
-        "description": "Dünya genelinde 200+ lokasyonda edge-cached, DDoS korumalı ve milisaniyeler içinde yüklenen web siteleri.",
+        "title": "Cloudflare Edge & Güvenlik",
+        "description": "Cloudflare Pages, Workers ve WAF entegrasyonu ile dünyanın her noktasında milisaniyeler içinde yüklenen, DDoS ve bot saldırılarına karşı korunaklı edge-first altyapılar kuruyoruz.",
         "features": [
           "Cloudflare Pages statik hosting",
           "Workers ile serverless fonksiyonlar",
@@ -423,25 +461,69 @@
         ]
       },
       {
-        "title": "Headless E-Ticaret",
-        "description": "Shopify, Medusa veya özel backend ile yüksek dönüşümlü, ölçeklenebilir e-ticaret platformları.",
+        "title": "Headless E-Ticaret Çözümleri",
+        "description": "Shopify Storefront API ve Medusa.js ile yüksek dönüşümlü, ölçeklenebilir e-ticaret platformları inşa ediyoruz.",
         "features": [
           "Shopify Storefront API entegrasyonu",
-          "Medusa.js custom backend",
+          "Medusa.js özel backend",
           "Stripe ve iyzico ödeme altyapısı",
           "Sepet ve checkout optimizasyonu",
           "Inventory ve order management"
         ]
       },
       {
-        "title": "Performans & SEO",
-        "description": "%100 PageSpeed skorları, Core Web Vitals uyumluluğu ve arama motorlarında üst sıralama.",
+        "title": "Performans & SEO Optimizasyonu",
+        "description": "%100 PageSpeed skorları, Core Web Vitals uyumluluğu ve teknik SEO altyapısı ile arama motorlarında üst sıralama.",
         "features": [
           "Lighthouse ve PageSpeed optimizasyonu",
           "Core Web Vitals (LCP, FID, CLS)",
           "Schema.org yapılandırılmış veri",
           "XML Sitemap ve robots.txt",
           "Canonical ve hreflang etiketleri"
+        ]
+      },
+      {
+        "title": "SaaS Dashboard Geliştirme",
+        "description": "B2B SaaS ürünleri için karmaşık veri görselleştirme, gerçek zamanlı güncellemeler ve kullanıcı dostu yönetim panelleri.",
+        "features": [
+          "Gerçek zamanlı veri görselleştirme",
+          "Karmaşık veri tabloları ve grafikler",
+          "Rol tabanlı erişim kontrolü (RBAC)",
+          "Multi-tenant mimari desteği",
+          "Özelleştirilebilir widget'lar"
+        ]
+      },
+      {
+        "title": "Headless CMS Entegrasyonu",
+        "description": "Sanity.io ve Payload CMS ile içerik ekibinizin kolayca yönetebileceği, geliştiricilerin esnekçe entegre edebileceği modern CMS altyapıları.",
+        "features": [
+          "Sanity.io veya Payload CMS kurulumu",
+          "Gerçek zamanlı içerik önizleme",
+          "Özel içerik şemaları ve tipleri",
+          "Çoklu dil desteği",
+          "Webhook entegrasyonları"
+        ]
+      },
+      {
+        "title": "API Geliştirme & Entegrasyon",
+        "description": "RESTful ve GraphQL API'ler geliştiriyor, üçüncü parti servisleri projelerinize güvenle entegre ediyoruz.",
+        "features": [
+          "RESTful API tasarımı ve geliştirme",
+          "GraphQL API ve Apollo Server",
+          "Üçüncü parti API entegrasyonları",
+          "OAuth 2.0 ve JWT kimlik doğrulama",
+          "API dokümantasyonu (Swagger/OpenAPI)"
+        ]
+      },
+      {
+        "title": "Veritabanı & Backend Mimarisi",
+        "description": "PostgreSQL ve Drizzle ORM ile tip güvenli, performanslı ve bakımı kolay veritabanı mimarileri tasarlıyoruz.",
+        "features": [
+          "PostgreSQL veritabanı tasarımı",
+          "Drizzle ORM ile tip güvenli sorgular",
+          "Veritabanı migrasyon yönetimi",
+          "İlişkisel veri modelleme",
+          "Performans optimizasyonu ve indexleme"
         ]
       }
     ]

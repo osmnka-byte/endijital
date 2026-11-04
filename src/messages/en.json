@@ -22,23 +22,57 @@
   },
   "services": {
     "sectionTitle": "Our Expertise",
-    "sectionDescription": "Comprehensive digital solutions powered by modern web technologies to take your business to the next level.",
-    "nextjs": {
-      "title": "Next.js 15 Architecture",
-      "description": "We build SEO-friendly, ultra-fast, and scalable modern web applications powered by App Router, React 19, Server Components, and Streaming."
-    },
-    "cloudflare": {
-      "title": "Cloudflare Edge & Security",
-      "description": "We build edge-first infrastructures that load in milliseconds worldwide and are protected against DDoS and bot attacks through Cloudflare Pages, Workers, and WAF integration."
-    },
-    "ecommerce": {
-      "title": "E-Commerce Solutions",
-      "description": "We integrate Shopify, Medusa, and custom payment gateways through headless e-commerce architecture, delivering high-conversion sales platforms with optimized checkout flows."
-    },
-    "performance": {
-      "title": "Performance & SEO Optimization",
-      "description": "We deliver technical SEO infrastructure with 100% PageSpeed scores, Zero-CLS, Core Web Vitals compliance, and structured data (Schema.org) to rank at the top of search engines."
-    }
+    "sectionDescription": "Professional digital solutions across 8 different areas to take your business to the next level with modern web technologies.",
+    "services": [
+      {
+        "slug": "nextjs-architecture",
+        "icon": "Code",
+        "title": "Next.js 15 Architecture",
+        "description": "We build SEO-friendly, ultra-fast, and scalable modern web applications with App Router, React 19, Server Components, and Streaming."
+      },
+      {
+        "slug": "cloudflare-edge",
+        "icon": "Shield",
+        "title": "Cloudflare Edge & Security",
+        "description": "We build edge-first infrastructures that load in milliseconds worldwide and are protected against DDoS and bot attacks through Cloudflare Pages, Workers, and WAF integration."
+      },
+      {
+        "slug": "ecommerce",
+        "icon": "ShoppingCart",
+        "title": "E-Commerce Solutions",
+        "description": "We integrate Shopify, Medusa, and custom payment gateways through headless e-commerce architecture, delivering high-conversion sales platforms with optimized checkout flows."
+      },
+      {
+        "slug": "performance-seo",
+        "icon": "Zap",
+        "title": "Performance & SEO Optimization",
+        "description": "We deliver technical SEO infrastructure with 100% PageSpeed scores, Zero-CLS, Core Web Vitals compliance, and structured data (Schema.org) to rank at the top of search engines."
+      },
+      {
+        "slug": "saas-dashboard",
+        "icon": "LayoutDashboard",
+        "title": "SaaS Dashboard Development",
+        "description": "We develop complex data visualization, real-time updates, and user-friendly management panels for B2B SaaS products."
+      },
+      {
+        "slug": "headless-cms",
+        "icon": "FileText",
+        "title": "Headless CMS Integration",
+        "description": "We build modern content management infrastructures with Sanity.io and Payload CMS that your content team can easily manage and developers can flexibly integrate."
+      },
+      {
+        "slug": "api-development",
+        "icon": "Plug",
+        "title": "API Development & Integration",
+        "description": "We develop RESTful and GraphQL APIs and securely integrate third-party services like payment systems, shipping companies, and CRM software into your projects."
+      },
+      {
+        "slug": "database-architecture",
+        "icon": "Database",
+        "title": "Database & Backend Architecture",
+        "description": "We design type-safe, performant, and maintainable database architectures with PostgreSQL and Drizzle ORM to manage your data securely and efficiently."
+      }
+    ]
   },
   "portfolio": {
     "sectionTitle": "Our Products & Projects",
@@ -350,7 +384,11 @@
         { "label": "Next.js Development", "href": "/services" },
         { "label": "Cloudflare Edge", "href": "/services" },
         { "label": "E-Commerce Solutions", "href": "/services" },
-        { "label": "SEO Optimization", "href": "/services" }
+        { "label": "SEO Optimization", "href": "/services" },
+        { "label": "SaaS Dashboard", "href": "/services" },
+        { "label": "Headless CMS", "href": "/services" },
+        { "label": "API Development", "href": "/services" },
+        { "label": "Database Architecture", "href": "/services" }
       ]
     },
     "social": {
@@ -398,11 +436,11 @@
   },
   "services_page": {
     "pageTitle": "Our Services",
-    "pageDescription": "Comprehensive digital solutions powered by modern web technologies to take your business to the next level.",
+    "pageDescription": "Professional digital solutions across 8 different areas to take your business to the next level with modern web technologies.",
     "detailed": [
       {
-        "title": "Next.js 15 Development",
-        "description": "Ultra-fast, SEO-friendly web applications with App Router, React Server Components, Streaming, and Partial Prerendering.",
+        "title": "Next.js 15 Architecture",
+        "description": "We build SEO-friendly, ultra-fast, and scalable modern web applications with App Router, React 19, Server Components, and Streaming.",
         "features": [
           "App Router and React 19 integration",
           "Server Components and Streaming",
@@ -412,8 +450,8 @@
         ]
       },
       {
-        "title": "Cloudflare Edge Infrastructure",
-        "description": "Edge-cached, DDoS-protected websites that load in milliseconds across 200+ global locations.",
+        "title": "Cloudflare Edge & Security",
+        "description": "We build edge-first infrastructures that load in milliseconds worldwide and are protected against DDoS and bot attacks through Cloudflare Pages, Workers, and WAF integration.",
         "features": [
           "Cloudflare Pages static hosting",
           "Workers serverless functions",
@@ -423,8 +461,8 @@
         ]
       },
       {
-        "title": "Headless E-Commerce",
-        "description": "High-conversion, scalable e-commerce platforms with Shopify, Medusa, or custom backends.",
+        "title": "Headless E-Commerce Solutions",
+        "description": "We build high-conversion, scalable e-commerce platforms with Shopify Storefront API and Medusa.js.",
         "features": [
           "Shopify Storefront API integration",
           "Medusa.js custom backend",
@@ -434,14 +472,58 @@
         ]
       },
       {
-        "title": "Performance & SEO",
-        "description": "100% PageSpeed scores, Core Web Vitals compliance, and top search engine rankings.",
+        "title": "Performance & SEO Optimization",
+        "description": "100% PageSpeed scores, Core Web Vitals compliance, and technical SEO infrastructure for top search rankings.",
         "features": [
           "Lighthouse and PageSpeed optimization",
           "Core Web Vitals (LCP, FID, CLS)",
           "Schema.org structured data",
           "XML Sitemap and robots.txt",
           "Canonical and hreflang tags"
+        ]
+      },
+      {
+        "title": "SaaS Dashboard Development",
+        "description": "Complex data visualization, real-time updates, and user-friendly management panels for B2B SaaS products.",
+        "features": [
+          "Real-time data visualization",
+          "Complex data tables and charts",
+          "Role-based access control (RBAC)",
+          "Multi-tenant architecture support",
+          "Customizable widgets"
+        ]
+      },
+      {
+        "title": "Headless CMS Integration",
+        "description": "Modern CMS infrastructures with Sanity.io and Payload CMS that your content team can easily manage and developers can flexibly integrate.",
+        "features": [
+          "Sanity.io or Payload CMS setup",
+          "Real-time content preview",
+          "Custom content schemas and types",
+          "Multi-language support",
+          "Webhook integrations"
+        ]
+      },
+      {
+        "title": "API Development & Integration",
+        "description": "We develop RESTful and GraphQL APIs and securely integrate third-party services into your projects.",
+        "features": [
+          "RESTful API design and development",
+          "GraphQL API and Apollo Server",
+          "Third-party API integrations",
+          "OAuth 2.0 and JWT authentication",
+          "API documentation (Swagger/OpenAPI)"
+        ]
+      },
+      {
+        "title": "Database & Backend Architecture",
+        "description": "We design type-safe, performant, and maintainable database architectures with PostgreSQL and Drizzle ORM.",
+        "features": [
+          "PostgreSQL database design",
+          "Type-safe queries with Drizzle ORM",
+          "Database migration management",
+          "Relational data modeling",
+          "Performance optimization and indexing"
         ]
       }
     ]
@@ -470,7 +552,7 @@
     },
     "mission": {
       "title": "Our Mission",
-      "text": "To help businesses gain competitive advantage in the digital world with modern web technologies. To contribute to our clients' growth by building performance-focused, scalable, and secure digital products."
+      "text": "To help businesses gain competitive advantages in the digital world with modern web technologies. To contribute to our clients' growth by building performance-focused, scalable, and secure digital products."
     },
     "vision": {
       "title": "Our Vision",
