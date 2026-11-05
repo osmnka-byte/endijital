@@ -18,12 +18,12 @@ export async function generateMetadata({
 
   const title =
     locale === "tr"
-      ? "Endijital | Geleceğin Web Mimarisi"
-      : "Endijital | Next-Gen Web Architecture";
+      ? "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler"
+      : "Endijital | Next-Gen Web Architecture & Digital Solutions";
 
   const description =
     (messages.meta?.siteDescription as string) ||
-    "High-performance digital products built with Next.js 15, Cloudflare Edge and modern web technologies.";
+    "High-performance digital products built with Next.js, Cloudflare Edge and modern web technologies.";
 
   return generateSeo({ title, description, path: "", locale });
 }
@@ -37,12 +37,12 @@ function homePageJsonLd(locale: string) {
     url: url,
     name:
       locale === "tr"
-        ? "Endijital | Geleceğin Web Mimarisi"
-        : "Endijital | Next-Gen Web Architecture",
+        ? "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler"
+        : "Endijital | Next-Gen Web Architecture & Digital Solutions",
     description:
       locale === "tr"
-        ? "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
-        : "Agency developing high-performance digital products with Next.js 15, Cloudflare Edge and modern web technologies.",
+        ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
+        : "Agency developing high-performance digital products with Next.js, Cloudflare Edge and modern web technologies.",
     isPartOf: { "@id": "https://endijital.com/#website" },
     about: { "@id": "https://endijital.com/#organization" },
     primaryImageOfPage: {
@@ -73,67 +73,6 @@ function breadcrumbJsonLd(locale: string) {
   };
 }
 
-function servicesJsonLd(locale: string) {
-  const services = [
-    {
-      name:
-        locale === "tr" ? "Next.js 15 Geliştirme" : "Next.js 15 Development",
-      description:
-        locale === "tr"
-          ? "App Router, React 19, Server Components ve Streaming ile SEO dostu, ultra hızlı, ölçeklenebilir modern web uygulamaları."
-          : "SEO-friendly, ultra-fast, scalable modern web apps with App Router, React 19, Server Components, and Streaming.",
-      serviceType: "Web Application Development",
-    },
-    {
-      name:
-        locale === "tr"
-          ? "Cloudflare Edge Altyapısı"
-          : "Cloudflare Edge Infrastructure",
-      description:
-        locale === "tr"
-          ? "200+ lokasyonda edge-cached, DDoS korumalı, milisaniyeler içinde yüklenen edge-first web siteleri."
-          : "Edge-cached, DDoS-protected websites that load in milliseconds across 200+ global locations.",
-      serviceType: "Web Hosting & Edge Computing",
-    },
-    {
-      name:
-        locale === "tr"
-          ? "Headless E-Ticaret Çözümleri"
-          : "Headless E-Commerce Solutions",
-      description:
-        locale === "tr"
-          ? "Shopify, Medusa veya özel backend ile yüksek dönüşümlü, ölçeklenebilir e-ticaret platformları."
-          : "High-conversion, scalable e-commerce platforms with Shopify, Medusa, or custom backends.",
-      serviceType: "E-Commerce Development",
-    },
-    {
-      name:
-        locale === "tr"
-          ? "Performans & SEO Optimizasyonu"
-          : "Performance & SEO Optimization",
-      description:
-        locale === "tr"
-          ? "%100 PageSpeed skorları, Core Web Vitals uyumluluğu ve teknik SEO altyapısı ile arama motorlarında üst sıralama."
-          : "100% PageSpeed scores, Core Web Vitals compliance, and technical SEO infrastructure for top search rankings.",
-      serviceType: "SEO Services",
-    },
-  ];
-
-  return services.map((service) => ({
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.name,
-    description: service.description,
-    serviceType: service.serviceType,
-    provider: { "@id": "https://endijital.com/#organization" },
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-    },
-    availableLanguage: ["Turkish", "English"],
-  }));
-}
-
 export default async function HomePage({
   params,
 }: {
@@ -142,11 +81,9 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const servicesList = servicesJsonLd(locale);
-
   return (
     <main>
-      {/* WebPage Schema - SADECE JSON-LD */}
+      {/* WebPage Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -154,7 +91,7 @@ export default async function HomePage({
         }}
       />
 
-      {/* Breadcrumb Schema - SADECE JSON-LD */}
+      {/* Breadcrumb Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -162,16 +99,10 @@ export default async function HomePage({
         }}
       />
 
-      {/* 4 Service Schema - SADECE JSON-LD */}
-      {servicesList.map((service, i) => (
-        <script
-          key={`service-${i}`}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(service),
-          }}
-        />
-      ))}
+      {/*
+        NOT: Service şemaları bu dosyada YOK.
+        8 Service şeması tek kaynak olarak [locale]/layout.tsx'ten render edilir.
+      */}
 
       <Hero />
       <Services />

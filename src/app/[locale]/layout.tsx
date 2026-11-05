@@ -21,13 +21,13 @@ export async function generateMetadata({
 
   const title =
     locale === "tr"
-      ? "Endijital | Geleceğin Web Mimarisi"
-      : "Endijital | Next-Gen Web Architecture";
+      ? "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler"
+      : "Endijital | Next-Gen Web Architecture & Digital Solutions";
 
   const description =
     locale === "tr"
-      ? "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler."
-      : "High-performance digital products built with Next.js 15, Cloudflare Edge and modern web technologies.";
+      ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler. Web geliştirme, e-ticaret ve SEO optimizasyonu hizmetleri."
+      : "High-performance digital products built with Next.js, Cloudflare Edge and modern web technologies. Web development, e-commerce, and SEO optimization services.";
 
   return {
     title,
@@ -66,7 +66,6 @@ export async function generateMetadata({
 /**
  * ORGANIZATION JSON-LD
  * ------------------------------------------------
- * GÜNCELLEME: Sahte telefon kaldırıldı.
  * Gerçek adres (PostalAddress) eklendi → Local SEO güçlenir.
  */
 function organizationJsonLd(locale: string) {
@@ -86,8 +85,8 @@ function organizationJsonLd(locale: string) {
     image: "https://endijital.com/opengraph-image.png",
     description:
       locale === "tr"
-        ? "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
-        : "Agency developing high-performance digital products with Next.js 15, Cloudflare Edge and modern web technologies.",
+        ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
+        : "Agency developing high-performance digital products with Next.js, Cloudflare Edge and modern web technologies.",
     email: "info@endijital.com",
     address: {
       "@type": "PostalAddress",
@@ -152,13 +151,13 @@ function webSiteJsonLd(locale: string) {
 /**
  * SERVICES JSON-LD (8 HİZMET)
  * ------------------------------------------------
- * Her hizmet için ayrı Service şeması üretilir.
- * Google Search Console'da "Service" tipinde algılanır.
+ * Tek kaynak: Service şemaları YALNIZCA bu dosyada üretilir.
+ * page.tsx içinde ayrıca service şeması BULUNMAMALIDIR (duplication yasağı).
  */
 function servicesJsonLd(locale: string) {
   const services = [
     {
-      name: locale === "tr" ? "Next.js 15 Mimarisi" : "Next.js 15 Architecture",
+      name: locale === "tr" ? "Next.js Mimarisi" : "Next.js Architecture",
       description:
         locale === "tr"
           ? "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları."

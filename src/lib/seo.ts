@@ -1,3 +1,4 @@
+// src/lib/seo.ts
 import { Metadata } from "next";
 
 interface SeoProps {
@@ -11,10 +12,10 @@ interface SeoProps {
 /**
  * Dinamik SEO Metadata Generator
  * ------------------------------------------------
- * DÜZELTME:
- * - og:url artık tam URL (https://endijital.com/tr)
- * - og:image artık /opengraph-image.png (Next.js otomatik üretir)
- * - twitter:image da aynı
+ * - path parametresinin başına otomatik "/" eklenir
+ *   ("services" ve "/services" ikisi de doğru URL üretir).
+ * - og:url, og:image, twitter:image tam URL olarak üretilir.
+ * - title olduğu gibi kullanılır (template uygulanmaz, çift suffix riski yok).
  */
 export function generateSeo({
   title,
@@ -24,7 +25,11 @@ export function generateSeo({
   locale = "tr",
 }: SeoProps): Metadata {
   const baseUrl = "https://endijital.com";
-  const url = `${baseUrl}/${locale}${path}`;
+
+  const normalizedPath =
+    path && !path.startsWith("/") ? `/${path}` : path;
+
+  const url = `${baseUrl}/${locale}${normalizedPath}`;
   const imageUrl = `${baseUrl}${image}`;
 
   return {
@@ -44,8 +49,8 @@ export function generateSeo({
     alternates: {
       canonical: url,
       languages: {
-        tr: `${baseUrl}/tr${path}`,
-        en: `${baseUrl}/en${path}`,
+        tr: `${baseUrl}/tr${normalizedPath}`,
+        en: `${baseUrl}/en${normalizedPath}`,
       },
     },
     openGraph: {
@@ -72,7 +77,7 @@ export function generateSeo({
       creator: "@endijital",
     },
     other: {
-      "publisher": "Endijital",
+      publisher: "Endijital",
     },
   };
 }

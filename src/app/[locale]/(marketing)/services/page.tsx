@@ -1,15 +1,47 @@
 // src/app/[locale]/(marketing)/services/page.tsx
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Code, Cloud, ShoppingCart, TrendingUp, CheckCircle } from "lucide-react";
+import {
+  Code,
+  Shield,
+  ShoppingCart,
+  Zap,
+  LayoutDashboard,
+  FileText,
+  Plug,
+  Database,
+} from "lucide-react";
 import { generateSeo } from "@/lib/seo";
 
-const serviceIcons = [Code, Cloud, ShoppingCart, TrendingUp];
+/**
+ * HİZMETLER SAYFASI (Server Component)
+ * ------------------------------------------------
+ * - 8 hizmet için 8 ayrı ikon + 8 ayrı gradient (anasayfa ile senkron).
+ * - Server component'te useTranslations YASAKTIR → await getTranslations().
+ * - Bu dosyada framer-motion KULLANILMAZ (invalid hook riski).
+ * - Tüm touch target'lar min 44px (mobil uyum).
+ */
+
+const serviceIcons = [
+  Code,
+  Shield,
+  ShoppingCart,
+  Zap,
+  LayoutDashboard,
+  FileText,
+  Plug,
+  Database,
+];
+
 const serviceGradients = [
   "from-blue-500 to-cyan-500",
   "from-purple-500 to-pink-500",
   "from-green-500 to-emerald-500",
   "from-orange-500 to-red-500",
+  "from-indigo-500 to-blue-500",
+  "from-fuchsia-500 to-purple-500",
+  "from-teal-500 to-cyan-500",
+  "from-amber-500 to-orange-500",
 ];
 
 export async function generateMetadata({
@@ -18,25 +50,18 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-
   return generateSeo({
-    title: locale === "tr" ? "Hizmetlerimiz | Endijital" : "Our Services | Endijital",
+    title:
+      locale === "tr" ? "Hizmetlerimiz | Endijital" : "Our Services | Endijital",
     description:
       locale === "tr"
-        ? "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak kapsamlı dijital çözümler."
-        : "Comprehensive digital solutions powered by modern web technologies to take your business to the next level.",
+        ? "Next.js mimarisi, Cloudflare Edge, e-ticaret, SEO, SaaS dashboard, headless CMS, API ve veritabanı çözümleri: 8 uzmanlık alanında uçtan uca dijital hizmet."
+        : "End-to-end digital services across 8 expertise areas: Next.js architecture, Cloudflare Edge, e-commerce, SEO, SaaS dashboards, headless CMS, APIs, and databases.",
     path: "/services",
     locale,
   });
 }
 
-/**
- * HİZMETLER SAYFASI (Server Component)
- * ------------------------------------------------
- * KURAL: Server component'lerde useTranslations YASAKTIR.
- * Doğrusu: await getTranslations() (next-intl/server).
- * Bu dosyada framer-motion KULLANILMAZ (invalid hook riski).
- */
 export default async function ServicesPage({
   params,
 }: {
@@ -44,8 +69,8 @@ export default async function ServicesPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-
   const t = await getTranslations("services_page");
+
   const services = t.raw("detailed") as Array<{
     title: string;
     description: string;
@@ -70,7 +95,6 @@ export default async function ServicesPage({
           {services.map((service, index) => {
             const Icon = serviceIcons[index % serviceIcons.length];
             const gradient = serviceGradients[index % serviceGradients.length];
-
             return (
               <article
                 key={service.title}
@@ -94,14 +118,22 @@ export default async function ServicesPage({
                     <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                       {service.description}
                     </p>
-
                     <ul className="space-y-3">
                       {service.features.map((feature) => (
                         <li key={feature} className="flex items-start gap-3">
-                          <CheckCircle
+                          <svg
                             className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                             aria-hidden="true"
-                          />
+                          >
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                          </svg>
                           <span className="text-foreground">{feature}</span>
                         </li>
                       ))}

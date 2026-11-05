@@ -11,6 +11,10 @@ import "./globals.css";
  * - notFound() KESİNLİKLE kullanılamaz (Next.js root layout'ta yasaklar).
  * - Locale doğrulama, redirect veya koşullu mantık BARINDIRMAZ.
  * - Tüm i18n mantığı src/app/[locale]/layout.tsx seviyesindedir.
+ *
+ * NEXT.JS 16 NOTU: title OBJE olarak kullanılırsa { default, template }
+ * ikilisi ZORUNLUDUR. Template istemediğimiz için title düz STRING'dir.
+ * Böylece çift suffix ("... | Endijital | Endijital") riski de yoktur.
  */
 
 const inter = Inter({
@@ -38,18 +42,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://endijital.com"),
-  title: {
-    default: "Endijital | Geleceğin Web Mimarisi",
-    template: "%s",
-  },
+  title: "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler",
   description:
-    "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler.",
+    "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler. Web geliştirme, e-ticaret ve SEO optimizasyonu hizmetleri.",
   applicationName: "Endijital",
   authors: [{ name: "Endijital", url: "https://endijital.com" }],
   creator: "Endijital",
   publisher: "Endijital",
   keywords: [
-    "Next.js 15",
+    "Next.js",
     "Cloudflare Edge",
     "web geliştirme",
     "e-ticaret",
