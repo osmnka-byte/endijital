@@ -439,7 +439,7 @@
     "pageDescription": "Modern web teknolojileri ile işletmenizi bir adım öteye taşıyacak 8 farklı alanda profesyonel dijital çözümler.",
     "detailed": [
       {
-        "title": "Next.js 15 Mimarisi",
+        "title": "Next.js Mimarisi",
         "description": "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları geliştiriyoruz.",
         "features": [
           "App Router ve React 19 entegrasyonu",
