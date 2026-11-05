@@ -10,6 +10,7 @@ import { Briefcase, AtSign, Code2, Camera } from "lucide-react";
  * ------------------------------------------------
  * SEO DÜZELTMESİ: Tüm linkler min 44px tap target
  * (Lighthouse mobile "tap-targets" audit'i → SEO skoru)
+ * SEO İyileştirmesi: Logo içindeki "E" harfi aria-hidden ile gizlendi (EEndijital okunması önlendi)
  */
 
 const socialIcons: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -54,7 +55,7 @@ export default function Footer() {
               aria-label="Endijital - Ana Sayfa"
             >
               <div className="logo-box bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center neon-glow">
-                <span className="text-white font-extrabold text-xl leading-none">
+                <span className="text-white font-extrabold text-xl leading-none" aria-hidden="true">
                   E
                 </span>
               </div>

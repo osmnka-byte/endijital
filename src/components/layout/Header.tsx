@@ -15,6 +15,7 @@ import { Rocket } from "lucide-react";
  * - whitespace-nowrap: CTA ve logo metni DAR ekranda ASLA sarılmaz
  * - Responsive padding: md'de kompakt (px-4), lg'de ferah (px-6)
  * - Touch target: tüm etkileşimli öğeler min 44px
+ * - SEO İyileştirmesi: Logo içindeki "E" harfi aria-hidden ile gizlendi (EEndijital okunması önlendi)
  */
 
 const navLinks = [
@@ -52,7 +53,7 @@ export default function Header() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between gap-4">
           {/* ============================================
-              LOGO - Footer'daki şık ve parıltılı tasarım entegre edildi
+              LOGO - SEO Botları için aria-hidden eklendi
               ============================================ */}
           <Link
             href="/"
@@ -60,7 +61,7 @@ export default function Header() {
             aria-label="Endijital - Ana Sayfa"
           >
             <div className="logo-box bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center neon-glow transition-all duration-300 group-hover:scale-105">
-              <span className="text-white font-extrabold text-xl leading-none">
+              <span className="text-white font-extrabold text-xl leading-none" aria-hidden="true">
                 E
               </span>
             </div>
