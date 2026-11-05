@@ -9,13 +9,14 @@ interface SeoProps {
   locale?: string;
 }
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
+
 /**
  * Dinamik SEO Metadata Generator
  * ------------------------------------------------
- * - path parametresinin başına otomatik "/" eklenir
- *   ("services" ve "/services" ikisi de doğru URL üretir).
- * - og:url, og:image, twitter:image tam URL olarak üretilir.
- * - title olduğu gibi kullanılır (template uygulanmaz, çift suffix riski yok).
+ * - Trailing slash ve çift slash hataları otomatik temizlenir.
+ * - Google uyumlu x-default hreflang etiketini içerir.
+ * - Harici (CDN) ve yerel görsel URL'lerini sorunsuz işler.
  */
 export function generateSeo({
   title,
@@ -24,15 +25,20 @@ export function generateSeo({
   image = "/opengraph-image.png",
   locale = "tr",
 }: SeoProps): Metadata {
-  const baseUrl = "https://endijital.com";
+  // Baştaki ve sondaki tüm slash karakterlerini temizle
+  const cleanPath = path.trim().replace(/^\/+|\/+$/g, "");
+  const pathSegment = cleanPath ? `/${cleanPath}` : "";
 
-  const normalizedPath =
-    path && !path.startsWith("/") ? `/${path}` : path;
+  // Tam Canonical URL
+  const canonicalUrl = `${BASE_URL}/${locale}${pathSegment}`;
 
-  const url = `${baseUrl}/${locale}${normalizedPath}`;
-  const imageUrl = `${baseUrl}${image}`;
+  // Görsel URL İşleme
+  const imageUrl = image.startsWith("http")
+    ? image
+    : `${BASE_URL}${image.startsWith("/") ? image : `/${image}`}`;
 
   return {
+    metadataBase: new URL(BASE_URL),
     title,
     description,
     robots: {
@@ -47,16 +53,17 @@ export function generateSeo({
       },
     },
     alternates: {
-      canonical: url,
+      canonical: canonicalUrl,
       languages: {
-        tr: `${baseUrl}/tr${normalizedPath}`,
-        en: `${baseUrl}/en${normalizedPath}`,
+        tr: `${BASE_URL}/tr${pathSegment}`,
+        en: `${BASE_URL}/en${pathSegment}`,
+        "x-default": `${BASE_URL}/tr${pathSegment}`,
       },
     },
     openGraph: {
       type: "website",
       locale: locale === "tr" ? "tr_TR" : "en_US",
-      url,
+      url: canonicalUrl,
       title,
       description,
       siteName: "Endijital",

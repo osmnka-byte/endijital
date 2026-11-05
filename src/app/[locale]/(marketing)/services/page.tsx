@@ -13,14 +13,7 @@ import {
 } from "lucide-react";
 import { generateSeo } from "@/lib/seo";
 
-/**
- * HİZMETLER SAYFASI (Server Component)
- * ------------------------------------------------
- * - 8 hizmet için 8 ayrı ikon + 8 ayrı gradient (anasayfa ile senkron).
- * - Server component'te useTranslations YASAKTIR → await getTranslations().
- * - Bu dosyada framer-motion KULLANILMAZ (invalid hook riski).
- * - Tüm touch target'lar min 44px (mobil uyum).
- */
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
 
 const serviceIcons = [
   Code,
@@ -62,6 +55,48 @@ export async function generateMetadata({
   });
 }
 
+function generateServicesPageJsonLd(locale: string) {
+  const isTr = locale === "tr";
+  const currentUrl = `${BASE_URL}/${locale}/services`;
+  const homeUrl = `${BASE_URL}/${locale}`;
+
+  const webPage = {
+    "@type": "WebPage",
+    "@id": `${currentUrl}#webpage`,
+    url: currentUrl,
+    name: isTr ? "Hizmetlerimiz | Endijital" : "Our Services | Endijital",
+    description: isTr
+      ? "Next.js mimarisi, Cloudflare Edge, e-ticaret, SEO, SaaS dashboard, headless CMS, API ve veritabanı çözümleri."
+      : "End-to-end digital services across 8 expertise areas.",
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#organization` },
+    inLanguage: isTr ? "tr-TR" : "en-US",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: homeUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: isTr ? "Hizmetlerimiz" : "Our Services",
+        item: currentUrl,
+      },
+    ],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [webPage, breadcrumb],
+  };
+}
+
 export default async function ServicesPage({
   params,
 }: {
@@ -77,8 +112,18 @@ export default async function ServicesPage({
     features: string[];
   }>;
 
+  const jsonLd = generateServicesPageJsonLd(locale);
+
   return (
     <main className="pt-32 pb-20">
+      {/* Services WebPage + Breadcrumb JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+
       <div className="container mx-auto px-4 md:px-6">
         {/* Page Header */}
         <header className="max-w-4xl mx-auto text-center mb-16">

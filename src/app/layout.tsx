@@ -4,33 +4,14 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-/**
- * ROOT LAYOUT (Kök Düzen)
- * ------------------------------------------------
- * MİMARİ KURAL: Bu dosya YALNIZCA <html> ve <body> iskeletini döndürür.
- * - notFound() KESİNLİKLE kullanılamaz (Next.js root layout'ta yasaklar).
- * - Locale doğrulama, redirect veya koşullu mantık BARINDIRMAZ.
- * - Tüm i18n mantığı src/app/[locale]/layout.tsx seviyesindedir.
- *
- * NEXT.JS 16 NOTU: title OBJE olarak kullanılırsa { default, template }
- * ikilisi ZORUNLUDUR. Template istemediğimiz için title düz STRING'dir.
- * Böylece çift suffix ("... | Endijital | Endijital") riski de yoktur.
- */
-
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-/**
- * VIEWPORT CONFIGURATION (Next.js 15+)
- * ------------------------------------------------
- * - width=device-width: Mobil uyumluluk
- * - initial-scale=1: Zoom engelleme
- * - theme-color: Mobil adres çubuğu rengi
- * - color-scheme: Native UI dark mode
- */
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -41,12 +22,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://endijital.com"),
+  metadataBase: new URL(BASE_URL),
   title: "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler",
   description:
     "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler. Web geliştirme, e-ticaret ve SEO optimizasyonu hizmetleri.",
   applicationName: "Endijital",
-  authors: [{ name: "Endijital", url: "https://endijital.com" }],
+  authors: [{ name: "Endijital", url: BASE_URL }],
   creator: "Endijital",
   publisher: "Endijital",
   keywords: [
@@ -57,6 +38,31 @@ export const metadata: Metadata = {
     "SEO optimizasyonu",
     "web development",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Endijital",
+    images: [
+      {
+        url: `${BASE_URL}/opengraph-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Endijital Dijital Çözümler",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: "@endijital",
+    images: [`${BASE_URL}/twitter-image.png`],
+  },
   robots: {
     index: true,
     follow: true,
@@ -78,13 +84,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="tr" suppressHydrationWarning className={inter.variable}>
+    <html suppressHydrationWarning className={inter.variable}>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
         {children}
       </body>

@@ -5,13 +5,7 @@ import { Mail, MapPin, Clock } from "lucide-react";
 import ContactForm from "@/components/sections/ContactForm";
 import { generateSeo } from "@/lib/seo";
 
-/**
- * İLETİŞİM SAYFASI (Server Component)
- * ------------------------------------------------
- * GÜNCELLEME: Telefon kartı kaldırıldı.
- * Bilgi kartları: E-posta + Adres (Google Maps linkli) + Çalışma Saatleri
- * SEO: Gerçek adres, LocalSEO (NAP tutarlılığı) için değerlidir.
- */
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
 
 const contactIcons = {
   email: Mail,
@@ -37,6 +31,48 @@ export async function generateMetadata({
   });
 }
 
+function generateContactPageJsonLd(locale: string) {
+  const isTr = locale === "tr";
+  const currentUrl = `${BASE_URL}/${locale}/contact`;
+  const homeUrl = `${BASE_URL}/${locale}`;
+
+  const contactPage = {
+    "@type": "ContactPage",
+    "@id": `${currentUrl}#webpage`,
+    url: currentUrl,
+    name: isTr ? "İletişim | Endijital" : "Contact | Endijital",
+    description: isTr
+      ? "Endijital ile iletişime geçin. Projeleriniz ve sorularınız için bize ulaşın."
+      : "Get in touch with Endijital for your projects and inquiries.",
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#organization` },
+    inLanguage: isTr ? "tr-TR" : "en-US",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: homeUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: isTr ? "İletişim" : "Contact",
+        item: currentUrl,
+      },
+    ],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [contactPage, breadcrumb],
+  };
+}
+
 export default async function ContactPage({
   params,
 }: {
@@ -53,8 +89,18 @@ export default async function ContactPage({
     { key: "hours", icon: contactIcons.hours },
   ] as const;
 
+  const jsonLd = generateContactPageJsonLd(locale);
+
   return (
     <main className="pt-32 pb-20">
+      {/* ContactPage + Breadcrumb Unified JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+
       <div className="container mx-auto px-4 md:px-6">
         {/* Page Header */}
         <header className="max-w-4xl mx-auto text-center mb-16">

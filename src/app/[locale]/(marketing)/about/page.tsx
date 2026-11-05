@@ -4,6 +4,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Award, Target, Eye, Heart } from "lucide-react";
 import { generateSeo } from "@/lib/seo";
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
+
 const valueIcons = [Award, Target, Eye, Heart];
 const valueGradients = [
   "from-blue-500 to-cyan-500",
@@ -30,10 +32,50 @@ export async function generateMetadata({
   });
 }
 
+function generateAboutPageJsonLd(locale: string) {
+  const isTr = locale === "tr";
+  const currentUrl = `${BASE_URL}/${locale}/about`;
+  const homeUrl = `${BASE_URL}/${locale}`;
+
+  const aboutPage = {
+    "@type": "AboutPage",
+    "@id": `${currentUrl}#webpage`,
+    url: currentUrl,
+    name: isTr ? "Hakkımızda | Endijital" : "About Us | Endijital",
+    description: isTr
+      ? "Endijital'in hikayesi, misyonumuz ve dijital dönüşüm vizyonumuz."
+      : "Endijital's story, our mission, and our digital transformation vision.",
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#organization` },
+    inLanguage: isTr ? "tr-TR" : "en-US",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: homeUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: isTr ? "Hakkımızda" : "About Us",
+        item: currentUrl,
+      },
+    ],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [aboutPage, breadcrumb],
+  };
+}
+
 /**
  * HAKKIMIZDA SAYFASI (Server Component)
- * ------------------------------------------------
- * KURAL: useTranslations yerine await getTranslations() kullanılır.
  */
 export default async function AboutPage({
   params,
@@ -53,8 +95,18 @@ export default async function AboutPage({
     items: Array<{ title: string; description: string }>;
   };
 
+  const jsonLd = generateAboutPageJsonLd(locale);
+
   return (
     <main className="pt-32 pb-20">
+      {/* AboutPage + Breadcrumb Unified JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+
       <div className="container mx-auto px-4 md:px-6">
         {/* Page Header */}
         <header className="max-w-4xl mx-auto text-center mb-16">

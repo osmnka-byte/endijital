@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import type { ComponentType } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,13 +10,7 @@ import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { PROJECT_VISUALS } from "@/components/sections/Portfolio";
 
-/**
- * PORTFOLYO ALT SAYFASI
- * ------------------------------------------------
- * - Filtre: Tümü / SaaS / Demo / Ar-Ge / Konsept
- * - Rozetler şeffaflık sağlar (SEO güven sinyali)
- * - PROJECT_VISUALS tek kaynak (anasayfa ile senkron)
- */
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
 
 type FilterKey = "all" | "saas" | "demo" | "arge" | "concept";
 
@@ -79,7 +73,58 @@ function ProjectCardImage({
   );
 }
 
-export default function PortfolioPage() {
+function generatePortfolioJsonLd(locale: string) {
+  const isTr = locale === "tr";
+  const currentUrl = `${BASE_URL}/${locale}/portfolio`;
+  const homeUrl = `${BASE_URL}/${locale}`;
+
+  const collectionPage = {
+    "@type": "CollectionPage",
+    "@id": `${currentUrl}#collectionpage`,
+    url: currentUrl,
+    name: isTr
+      ? "Portfolyo & Projelerimiz | Endijital"
+      : "Portfolio & Projects | Endijital",
+    description: isTr
+      ? "Next.js ve Cloudflare mimarisi ile geliştirdiğimiz dijital ürünler ve projeler."
+      : "Digital products and projects developed with Next.js and Cloudflare architecture.",
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#organization` },
+    inLanguage: isTr ? "tr-TR" : "en-US",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: homeUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: isTr ? "Portfolyo" : "Portfolio",
+        item: currentUrl,
+      },
+    ],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [collectionPage, breadcrumb],
+  };
+}
+
+export default function PortfolioPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const resolvedParams = use(params);
+  const locale = resolvedParams?.locale || "tr";
+
   const t = useTranslations("portfolio");
   const tPage = useTranslations("portfolio_page");
 
@@ -108,8 +153,18 @@ export default function PortfolioPage() {
       ? projects
       : projects.filter((p) => p.category === activeFilter);
 
+  const jsonLd = generatePortfolioJsonLd(locale);
+
   return (
     <main className="pt-32 pb-20">
+      {/* Portfolio Collection + Breadcrumb JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
+
       <div className="container mx-auto px-4 md:px-6">
         {/* Page Header */}
         <motion.header
@@ -126,7 +181,7 @@ export default function PortfolioPage() {
           </p>
         </motion.header>
 
-        {/* Filter Buttons - 44px touch target */}
+        {/* Filter Buttons */}
         <nav
           aria-label={tPage("pageTitle")}
           className="flex flex-wrap justify-center gap-3 mb-12"

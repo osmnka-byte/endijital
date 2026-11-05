@@ -8,6 +8,8 @@ import { routing } from "@/i18n/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
@@ -29,14 +31,17 @@ export async function generateMetadata({
       ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler. Web geliştirme, e-ticaret ve SEO optimizasyonu hizmetleri."
       : "High-performance digital products built with Next.js, Cloudflare Edge and modern web technologies. Web development, e-commerce, and SEO optimization services.";
 
+  const canonicalUrl = `${BASE_URL}/${locale}`;
+
   return {
     title,
     description,
     alternates: {
-      canonical: `https://endijital.com/${locale}`,
+      canonical: canonicalUrl,
       languages: {
-        tr: "https://endijital.com/tr",
-        en: "https://endijital.com/en",
+        tr: `${BASE_URL}/tr`,
+        en: `${BASE_URL}/en`,
+        "x-default": `${BASE_URL}/tr`,
       },
     },
     openGraph: {
@@ -45,9 +50,10 @@ export async function generateMetadata({
       siteName: "Endijital",
       title,
       description,
+      url: canonicalUrl,
       images: [
         {
-          url: "https://endijital.com/opengraph-image.png",
+          url: `${BASE_URL}/opengraph-image.png`,
           width: 1200,
           height: 630,
           alt: title,
@@ -58,35 +64,33 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: ["https://endijital.com/opengraph-image.png"],
+      images: [`${BASE_URL}/opengraph-image.png`],
     },
   };
 }
 
 /**
- * ORGANIZATION JSON-LD
- * ------------------------------------------------
- * Gerçek adres (PostalAddress) eklendi → Local SEO güçlenir.
+ * UNIFIED SCHEMA (@graph) — 1 tek <script> etiketi ile tüm şemalar
  */
-function organizationJsonLd(locale: string) {
-  return {
-    "@context": "https://schema.org",
+function generateUnifiedJsonLd(locale: string) {
+  const isTr = locale === "tr";
+
+  const organization = {
     "@type": "Organization",
-    "@id": "https://endijital.com/#organization",
+    "@id": `${BASE_URL}/#organization`,
     name: "Endijital",
     alternateName: "Endijital Ajans",
-    url: "https://endijital.com",
+    url: BASE_URL,
     logo: {
       "@type": "ImageObject",
-      url: "https://endijital.com/opengraph-image.png",
+      url: `${BASE_URL}/opengraph-image.png`,
       width: 1200,
       height: 630,
     },
-    image: "https://endijital.com/opengraph-image.png",
-    description:
-      locale === "tr"
-        ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
-        : "Agency developing high-performance digital products with Next.js, Cloudflare Edge and modern web technologies.",
+    image: `${BASE_URL}/opengraph-image.png`,
+    description: isTr
+      ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
+      : "Agency developing high-performance digital products with Next.js, Cloudflare Edge and modern web technologies.",
     email: "info@endijital.com",
     address: {
       "@type": "PostalAddress",
@@ -119,140 +123,104 @@ function organizationJsonLd(locale: string) {
       "PostgreSQL",
       "Drizzle ORM",
     ],
-    slogan:
-      locale === "tr" ? "Geleceğin Web Mimarisi" : "Next-Gen Web Architecture",
+    slogan: isTr ? "Geleceğin Web Mimarisi" : "Next-Gen Web Architecture",
   };
-}
 
-function webSiteJsonLd(locale: string) {
-  return {
-    "@context": "https://schema.org",
+  const website = {
     "@type": "WebSite",
-    "@id": "https://endijital.com/#website",
-    url: "https://endijital.com",
+    "@id": `${BASE_URL}/#website`,
+    url: BASE_URL,
     name: "Endijital",
-    description:
-      locale === "tr"
-        ? "Geleceğin Web Mimarisi"
-        : "Next-Gen Web Architecture",
-    publisher: { "@id": "https://endijital.com/#organization" },
-    inLanguage: locale === "tr" ? "tr-TR" : "en-US",
+    description: isTr ? "Geleceğin Web Mimarisi" : "Next-Gen Web Architecture",
+    publisher: { "@id": `${BASE_URL}/#organization` },
+    inLanguage: isTr ? "tr-TR" : "en-US",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `https://endijital.com/${locale}?s={search_term_string}`,
+        urlTemplate: `${BASE_URL}/${locale}?s={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
   };
-}
 
-/**
- * SERVICES JSON-LD (8 HİZMET)
- * ------------------------------------------------
- * Tek kaynak: Service şemaları YALNIZCA bu dosyada üretilir.
- * page.tsx içinde ayrıca service şeması BULUNMAMALIDIR (duplication yasağı).
- */
-function servicesJsonLd(locale: string) {
-  const services = [
+  const rawServices = [
     {
-      name: locale === "tr" ? "Next.js Mimarisi" : "Next.js Architecture",
-      description:
-        locale === "tr"
-          ? "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları."
-          : "SEO-friendly, ultra-fast, and scalable modern web applications with App Router, React 19, Server Components, and Streaming.",
+      name: isTr ? "Next.js Mimarisi" : "Next.js Architecture",
+      description: isTr
+        ? "App Router, React 19, Server Components ve Streaming ile inşa edilmiş, SEO dostu, ultra hızlı ve ölçeklenebilir modern web uygulamaları."
+        : "SEO-friendly, ultra-fast, and scalable modern web applications with App Router, React 19, Server Components, and Streaming.",
       serviceType: "Web Application Development",
     },
     {
-      name:
-        locale === "tr"
-          ? "Cloudflare Edge & Güvenlik"
-          : "Cloudflare Edge & Security",
-      description:
-        locale === "tr"
-          ? "Cloudflare Pages, Workers ve WAF entegrasyonu ile dünyanın her noktasında milisaniyeler içinde yüklenen, DDoS ve bot saldırılarına karşı korunaklı edge-first altyapılar."
-          : "Edge-first infrastructures that load in milliseconds worldwide and are protected against DDoS and bot attacks through Cloudflare Pages, Workers, and WAF integration.",
+      name: isTr ? "Cloudflare Edge & Güvenlik" : "Cloudflare Edge & Security",
+      description: isTr
+        ? "Cloudflare Pages, Workers ve WAF entegrasyonu ile dünyanın her noktasında milisaniyeler içinde yüklenen, DDoS ve bot saldırılarına karşı korunaklı edge-first altyapılar."
+        : "Edge-first infrastructures that load in milliseconds worldwide and are protected against DDoS and bot attacks through Cloudflare Pages, Workers, and WAF integration.",
       serviceType: "Web Hosting & Edge Computing",
     },
     {
-      name: locale === "tr" ? "E-Ticaret Çözümleri" : "E-Commerce Solutions",
-      description:
-        locale === "tr"
-          ? "Headless e-ticaret mimarisi ile Shopify, Medusa ve özel ödeme altyapılarını entegre ediyor, dönüşüm oranı yüksek satış platformları inşa ediyoruz."
-          : "We integrate Shopify, Medusa, and custom payment gateways through headless e-commerce architecture, delivering high-conversion sales platforms.",
+      name: isTr ? "E-Ticaret Çözümleri" : "E-Commerce Solutions",
+      description: isTr
+        ? "Headless e-ticaret mimarisi ile Shopify, Medusa ve özel ödeme altyapılarını entegre ediyor, dönüşüm oranı yüksek satış platformları inşa ediyoruz."
+        : "We integrate Shopify, Medusa, and custom payment gateways through headless e-commerce architecture, delivering high-conversion sales platforms.",
       serviceType: "E-Commerce Development",
     },
     {
-      name:
-        locale === "tr"
-          ? "Performans & SEO Optimizasyonu"
-          : "Performance & SEO Optimization",
-      description:
-        locale === "tr"
-          ? "%100 PageSpeed skorları, Zero-CLS, Core Web Vitals uyumluluğu ve yapılandırılmış veri (Schema.org) ile arama motorlarında zirveye oynayan teknik SEO altyapısı."
-          : "Technical SEO infrastructure with 100% PageSpeed scores, Zero-CLS, Core Web Vitals compliance, and structured data (Schema.org) for top search rankings.",
+      name: isTr ? "Performans & SEO Optimizasyonu" : "Performance & SEO Optimization",
+      description: isTr
+        ? "%100 PageSpeed skorları, Zero-CLS, Core Web Vitals uyumluluğu ve yapılandırılmış veri (Schema.org) ile arama motorlarında zirveye oynayan teknik SEO altyapısı."
+        : "Technical SEO infrastructure with 100% PageSpeed scores, Zero-CLS, Core Web Vitals compliance, and structured data (Schema.org) for top search rankings.",
       serviceType: "SEO Services",
     },
     {
-      name:
-        locale === "tr"
-          ? "SaaS Dashboard Geliştirme"
-          : "SaaS Dashboard Development",
-      description:
-        locale === "tr"
-          ? "B2B SaaS ürünleri için karmaşık veri görselleştirme, gerçek zamanlı güncellemeler ve kullanıcı dostu yönetim panelleri."
-          : "Complex data visualization, real-time updates, and user-friendly management panels for B2B SaaS products.",
+      name: isTr ? "SaaS Dashboard Geliştirme" : "SaaS Dashboard Development",
+      description: isTr
+        ? "B2B SaaS ürünleri için karmaşık veri görselleştirme, gerçek zamanlı güncellemeler ve kullanıcı dostu yönetim panelleri."
+        : "Complex data visualization, real-time updates, and user-friendly management panels for B2B SaaS products.",
       serviceType: "SaaS Development",
     },
     {
-      name:
-        locale === "tr"
-          ? "Headless CMS Entegrasyonu"
-          : "Headless CMS Integration",
-      description:
-        locale === "tr"
-          ? "Sanity.io ve Payload CMS ile içerik ekibinizin kolayca yönetebileceği, geliştiricilerin esnekçe entegre edebileceği modern CMS altyapıları."
-          : "Modern CMS infrastructures with Sanity.io and Payload CMS that your content team can easily manage and developers can flexibly integrate.",
+      name: isTr ? "Headless CMS Entegrasyonu" : "Headless CMS Integration",
+      description: isTr
+        ? "Sanity.io ve Payload CMS ile içerik ekibinizin kolayca yönetebileceği, geliştiricilerin esnekçe entegre edebileceği modern CMS altyapıları."
+        : "Modern CMS infrastructures with Sanity.io and Payload CMS that your content team can easily manage and developers can flexibly integrate.",
       serviceType: "Content Management",
     },
     {
-      name:
-        locale === "tr"
-          ? "API Geliştirme & Entegrasyon"
-          : "API Development & Integration",
-      description:
-        locale === "tr"
-          ? "RESTful ve GraphQL API'ler geliştiriyor, üçüncü parti servisleri projelerinize güvenle entegre ediyoruz."
-          : "We develop RESTful and GraphQL APIs and securely integrate third-party services into your projects.",
+      name: isTr ? "API Geliştirme & Entegrasyon" : "API Development & Integration",
+      description: isTr
+        ? "RESTful ve GraphQL API'ler geliştiriyor, üçüncü parti servisleri projelerinize güvenle entegre ediyoruz."
+        : "We develop RESTful and GraphQL APIs and securely integrate third-party services into your projects.",
       serviceType: "API Development",
     },
     {
-      name:
-        locale === "tr"
-          ? "Veritabanı & Backend Mimarisi"
-          : "Database & Backend Architecture",
-      description:
-        locale === "tr"
-          ? "PostgreSQL ve Drizzle ORM ile tip güvenli, performanslı ve bakımı kolay veritabanı mimarileri tasarlıyoruz."
-          : "We design type-safe, performant, and maintainable database architectures with PostgreSQL and Drizzle ORM.",
+      name: isTr ? "Veritabanı & Backend Mimarisi" : "Database & Backend Architecture",
+      description: isTr
+        ? "PostgreSQL ve Drizzle ORM ile tip güvenli, performanslı ve bakımı kolay veritabanı mimarileri tasarlıyoruz."
+        : "We design type-safe, performant, and maintainable database architectures with PostgreSQL and Drizzle ORM.",
       serviceType: "Backend Development",
     },
   ];
 
-  return services.map((service) => ({
-    "@context": "https://schema.org",
+  const services = rawServices.map((service, index) => ({
     "@type": "Service",
+    "@id": `${BASE_URL}/#service-${index + 1}`,
     name: service.name,
     description: service.description,
     serviceType: service.serviceType,
-    provider: { "@id": "https://endijital.com/#organization" },
+    provider: { "@id": `${BASE_URL}/#organization` },
     areaServed: {
       "@type": "Place",
       name: "Worldwide",
     },
     availableLanguage: ["Turkish", "English"],
   }));
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [organization, website, ...services],
+  };
 }
 
 export default async function LocaleLayout({
@@ -272,36 +240,17 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   const skipLabel = locale === "tr" ? "İçeriğe atla" : "Skip to content";
-  const servicesList = servicesJsonLd(locale);
+  const unifiedJsonLd = generateUnifiedJsonLd(locale);
 
   return (
     <NextIntlClientProvider messages={messages}>
-      {/* Organization Schema */}
+      {/* Unified JSON-LD Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationJsonLd(locale)),
+          __html: JSON.stringify(unifiedJsonLd),
         }}
       />
-
-      {/* WebSite Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(webSiteJsonLd(locale)),
-        }}
-      />
-
-      {/* 8 Service Schemas */}
-      {servicesList.map((service, i) => (
-        <script
-          key={`service-${locale}-${i}`}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(service),
-          }}
-        />
-      ))}
 
       <div className="relative flex min-h-screen flex-col bg-background text-foreground">
         <a

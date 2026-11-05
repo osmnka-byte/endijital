@@ -8,6 +8,8 @@ import About from "@/components/sections/About";
 import CTA from "@/components/sections/CTA";
 import { generateSeo } from "@/lib/seo";
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
+
 export async function generateMetadata({
   params,
 }: {
@@ -28,48 +30,48 @@ export async function generateMetadata({
   return generateSeo({ title, description, path: "", locale });
 }
 
-function homePageJsonLd(locale: string) {
-  const url = `https://endijital.com/${locale}`;
-  return {
-    "@context": "https://schema.org",
+function generateHomePageJsonLd(locale: string) {
+  const isTr = locale === "tr";
+  const currentUrl = `${BASE_URL}/${locale}`;
+
+  const webPage = {
     "@type": "WebPage",
-    "@id": `${url}#webpage`,
-    url: url,
-    name:
-      locale === "tr"
-        ? "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler"
-        : "Endijital | Next-Gen Web Architecture & Digital Solutions",
-    description:
-      locale === "tr"
-        ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
-        : "Agency developing high-performance digital products with Next.js, Cloudflare Edge and modern web technologies.",
-    isPartOf: { "@id": "https://endijital.com/#website" },
-    about: { "@id": "https://endijital.com/#organization" },
+    "@id": `${currentUrl}#webpage`,
+    url: currentUrl,
+    name: isTr
+      ? "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler"
+      : "Endijital | Next-Gen Web Architecture & Digital Solutions",
+    description: isTr
+      ? "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
+      : "Agency developing high-performance digital products with Next.js, Cloudflare Edge and modern web technologies.",
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#organization` },
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: "https://endijital.com/opengraph-image.png",
+      url: `${BASE_URL}/opengraph-image.png`,
       width: 1200,
       height: 630,
     },
-    inLanguage: locale === "tr" ? "tr-TR" : "en-US",
+    inLanguage: isTr ? "tr-TR" : "en-US",
     datePublished: "2024-01-01",
     dateModified: new Date().toISOString().split("T")[0],
   };
-}
 
-function breadcrumbJsonLd(locale: string) {
-  const name = locale === "tr" ? "Ana Sayfa" : "Home";
-  return {
-    "@context": "https://schema.org",
+  const breadcrumb = {
     "@type": "BreadcrumbList",
     itemListElement: [
       {
         "@type": "ListItem",
         position: 1,
-        name: name,
-        item: `https://endijital.com/${locale}`,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: currentUrl,
       },
     ],
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [webPage, breadcrumb],
   };
 }
 
@@ -81,28 +83,17 @@ export default async function HomePage({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const homePageJsonLd = generateHomePageJsonLd(locale);
+
   return (
     <main>
-      {/* WebPage Schema */}
+      {/* WebPage + Breadcrumb Unified JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(homePageJsonLd(locale)),
+          __html: JSON.stringify(homePageJsonLd),
         }}
       />
-
-      {/* Breadcrumb Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbJsonLd(locale)),
-        }}
-      />
-
-      {/*
-        NOT: Service şemaları bu dosyada YOK.
-        8 Service şeması tek kaynak olarak [locale]/layout.tsx'ten render edilir.
-      */}
 
       <Hero />
       <Services />

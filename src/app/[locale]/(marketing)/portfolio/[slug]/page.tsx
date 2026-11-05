@@ -7,14 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { ArrowLeft, ExternalLink, CheckCircle, BarChart3 } from "lucide-react";
 import { generateSeo } from "@/lib/seo";
 
-/**
- * PORTFOLYO DETAY SAYFASI (Server Component)
- * ------------------------------------------------
- * - 8 slug × 2 locale = 16 statik sayfa
- * - Gerçek ürünler: SoftwareApplication JSON-LD
- * - Demo/Ar-Ge/Konsept: CreativeWork JSON-LD (dürüst etiketleme)
- * - url boşsa "Ziyaret Et" butonu render EDİLMEZ
- */
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
 
 const PROJECT_SLUGS = [
   "kar-dedektoru",
@@ -73,31 +66,79 @@ export async function generateMetadata({
   }
 }
 
-function productJsonLd(slug: string, project: ProjectDetail, locale: string) {
-  const pageUrl = `https://endijital.com/${locale}/portfolio/${slug}`;
+function generateProjectUnifiedJsonLd(
+  slug: string,
+  project: ProjectDetail,
+  locale: string
+) {
+  const isTr = locale === "tr";
+  const pageUrl = `${BASE_URL}/${locale}/portfolio/${slug}`;
+  const portfolioUrl = `${BASE_URL}/${locale}/portfolio`;
+  const homeUrl = `${BASE_URL}/${locale}`;
 
-  if (REAL_PRODUCTS.has(slug)) {
-    return {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: project.title,
-      description: project.description,
-      url: pageUrl,
-      operatingSystem: "Web",
-      applicationCategory: "BusinessApplication",
-      creator: { "@id": "https://endijital.com/#organization" },
-      inLanguage: locale === "tr" ? "tr-TR" : "en-US",
-    };
-  }
+  const isRealProduct = REAL_PRODUCTS.has(slug);
+
+  const mainEntity = isRealProduct
+    ? {
+        "@type": "SoftwareApplication",
+        "@id": `${pageUrl}#software`,
+        name: project.title,
+        description: project.description,
+        url: pageUrl,
+        operatingSystem: "Web",
+        applicationCategory: "BusinessApplication",
+        creator: { "@id": `${BASE_URL}/#organization` },
+        inLanguage: isTr ? "tr-TR" : "en-US",
+      }
+    : {
+        "@type": "CreativeWork",
+        "@id": `${pageUrl}#creativework`,
+        name: project.title,
+        description: project.description,
+        url: pageUrl,
+        creator: { "@id": `${BASE_URL}/#organization` },
+        inLanguage: isTr ? "tr-TR" : "en-US",
+      };
+
+  const webPage = {
+    "@type": "ItemPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: `${project.title} | Endijital`,
+    description: project.description,
+    isPartOf: { "@id": `${BASE_URL}/#website` },
+    about: { "@id": `${BASE_URL}/#organization` },
+    mainEntity: { "@id": mainEntity["@id"] },
+    inLanguage: isTr ? "tr-TR" : "en-US",
+  };
+
+  const breadcrumb = {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: homeUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: isTr ? "Portfolyo" : "Portfolio",
+        item: portfolioUrl,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: pageUrl,
+      },
+    ],
+  };
 
   return {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project.title,
-    description: project.description,
-    url: pageUrl,
-    creator: { "@id": "https://endijital.com/#organization" },
-    inLanguage: locale === "tr" ? "tr-TR" : "en-US",
+    "@graph": [mainEntity, webPage, breadcrumb],
   };
 }
 
@@ -122,13 +163,16 @@ export default async function PortfolioDetailPage({
     notFound();
   }
 
+  const unifiedJsonLd = generateProjectUnifiedJsonLd(slug, project, locale);
+  const screenshotAltSuffix = locale === "tr" ? "ekran görüntüsü" : "screenshot";
+
   return (
     <main className="pt-32 pb-20">
-      {/* Product / CreativeWork Schema */}
+      {/* SoftwareApplication / CreativeWork + ItemPage + Breadcrumb Unified JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productJsonLd(slug, project, locale)),
+          __html: JSON.stringify(unifiedJsonLd),
         }}
       />
 
@@ -246,7 +290,7 @@ export default async function PortfolioDetailPage({
                   >
                     <Image
                       src={screenshot}
-                      alt={`${project.title} ekran görüntüsü ${index + 1}`}
+                      alt={`${project.title} ${screenshotAltSuffix} ${index + 1}`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover hover:scale-110 transition-transform duration-500"
