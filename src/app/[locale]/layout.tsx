@@ -34,6 +34,7 @@ export async function generateMetadata({
   const canonicalUrl = `${BASE_URL}/${locale}`;
 
   return {
+    metadataBase: new URL(BASE_URL),
     title,
     description,
     alternates: {
@@ -43,6 +44,18 @@ export async function generateMetadata({
         en: `${BASE_URL}/en`,
         "x-default": `${BASE_URL}/tr`,
       },
+    },
+    // Favicon ve Sekme İkonlarının Tarayıcılara Açık Bildirimi (404 Hatasını Önler)
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/icon.svg", type: "image/svg+xml" },
+        { url: "/icon.png", type: "image/png" },
+      ],
+      shortcut: ["/favicon.ico"],
+      apple: [
+        { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
     openGraph: {
       type: "website",
