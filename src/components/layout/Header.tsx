@@ -15,7 +15,6 @@ import { Rocket } from "lucide-react";
  * - whitespace-nowrap: CTA ve logo metni DAR ekranda ASLA sarılmaz
  * - Responsive padding: md'de kompakt (px-4), lg'de ferah (px-6)
  * - Touch target: tüm etkileşimli öğeler min 44px
- * - Logo "E" harfi SVG olarak render edilir → SEO botları metin olarak okuyamaz
  */
 
 const navLinks = [
@@ -53,26 +52,17 @@ export default function Header() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between gap-4">
           {/* ============================================
-              LOGO - .logo-box = 40px, metin sarılmaz
-              "E" harfi SVG olarak render edilir → SEO "EEndijital" okumaz
+              LOGO - Footer'daki şık ve parıltılı tasarım entegre edildi
               ============================================ */}
           <Link
             href="/"
             className="flex items-center gap-2.5 group shrink-0 min-h-[44px]"
             aria-label="Endijital - Ana Sayfa"
           >
-            <div className="logo-box bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center neon-glow-hover transition-all duration-300 group-hover:scale-105">
-              {/* ✅ KESİN ÇÖZÜM: SVG kullan → SEO botları metin olarak okuyamaz */}
-              <svg
-                className="w-5 h-5 text-white"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-                focusable="false"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M3 3h18v2H5v7h10v2H5v7h16v2H3V3z" />
-              </svg>
+            <div className="logo-box bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center neon-glow transition-all duration-300 group-hover:scale-105">
+              <span className="text-white font-extrabold text-xl leading-none">
+                E
+              </span>
             </div>
             <span className="logo-text text-foreground whitespace-nowrap">
               Endijital
@@ -122,8 +112,7 @@ export default function Header() {
           <div className="flex items-center gap-2 md:gap-3 shrink-0">
             <LanguageSwitcher />
 
-            {/* CTA - whitespace-nowrap: ASLA iki satıra sarılmaz
-                md'de kompakt (px-4), lg'de ferah (px-6) */}
+            {/* CTA - whitespace-nowrap: ASLA iki satıra sarılmaz */}
             <Link
               href="/contact"
               className={cn(
