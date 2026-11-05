@@ -1,7 +1,7 @@
 {
   "meta": {
     "siteName": "Endijital",
-    "siteDescription": "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler.",
+    "siteDescription": "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler. Web geliştirme, e-ticaret ve SEO optimizasyonu hizmetleri.",
     "siteUrl": "https://endijital.com"
   },
   "nav": {
@@ -366,7 +366,7 @@
   },
   "footer": {
     "brand": {
-      "description": "Next.js 15, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
+      "description": "Next.js, Cloudflare Edge ve modern web teknolojileri ile yüksek performanslı dijital ürünler geliştiren ajans."
     },
     "quickLinks": {
       "title": "Hızlı Erişim",
@@ -401,7 +401,7 @@
       ]
     },
     "copyright": "© 2026 Endijital. Tüm hakları saklıdır.",
-    "madeWith": "Next.js 15 & Cloudflare Edge ile ❤️ yapıldı"
+    "madeWith": "Next.js & Cloudflare Edge ile ❤️ yapıldı"
   },
   "contact": {
     "pageTitle": "İletişime Geçin",
