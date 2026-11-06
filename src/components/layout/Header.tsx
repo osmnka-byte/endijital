@@ -8,16 +8,6 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import MobileMenu from "./MobileMenu";
 import { Rocket } from "lucide-react";
 
-/**
- * HEADER (Dünya Standartları - 2026)
- * ------------------------------------------------
- * - Font/boyut: globals.css design token'ları (.logo-box, .nav-link, .cta-button)
- * - whitespace-nowrap: CTA ve logo metni DAR ekranda ASLA sarılmaz
- * - Responsive padding: md'de kompakt (px-4), lg'de ferah (px-6)
- * - Touch target: tüm etkileşimli öğeler min 44px
- * - SEO İyileştirmesi: Logo içindeki "E" harfi aria-hidden ile gizlendi (EEndijital okunması önlendi)
- */
-
 const navLinks = [
   { href: "/services", labelKey: "services" },
   { href: "/portfolio", labelKey: "portfolio" },
@@ -52,27 +42,29 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between gap-4">
-          {/* ============================================
-              LOGO - SEO Botları için aria-hidden eklendi
-              ============================================ */}
+          {/* LOGO - Metin düğümü olmadan SVG ikonu kullanıldı (innerText sadece 'Endijital' verir) */}
           <Link
             href="/"
             className="flex items-center gap-2.5 group shrink-0 min-h-[44px]"
             aria-label="Endijital - Ana Sayfa"
           >
             <div className="logo-box bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center neon-glow transition-all duration-300 group-hover:scale-105">
-              <span className="text-white font-extrabold text-xl leading-none" aria-hidden="true">
-                E
-              </span>
+              <svg
+                className="w-5 h-5 text-white"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M5 4h14v2.5H8.5v3.5h9.5v2.5H8.5v4.5H19V20H5V4z" />
+              </svg>
             </div>
             <span className="logo-text text-foreground whitespace-nowrap">
               Endijital
             </span>
           </Link>
 
-          {/* ============================================
-              DESKTOP NAV - .nav-link = 15px / medium
-              ============================================ */}
+          {/* DESKTOP NAV */}
           <nav
             className="hidden md:flex items-center gap-0.5 lg:gap-1"
             aria-label="Ana menü"
@@ -93,7 +85,6 @@ export default function Header() {
               >
                 {t(link.labelKey)}
 
-                {/* Aktif sayfa gradient göstergesi */}
                 <span
                   aria-hidden="true"
                   className={cn(
@@ -107,13 +98,10 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* ============================================
-              SAĞ AKSİYONLAR
-              ============================================ */}
+          {/* SAĞ AKSİYONLAR */}
           <div className="flex items-center gap-2 md:gap-3 shrink-0">
             <LanguageSwitcher />
 
-            {/* CTA - whitespace-nowrap: ASLA iki satıra sarılmaz */}
             <Link
               href="/contact"
               className={cn(
