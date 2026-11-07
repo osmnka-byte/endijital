@@ -8,14 +8,20 @@ import { Rocket, ArrowRight, Zap, Shield, Gauge } from "lucide-react";
  * HERO SECTION (SERVER COMPONENT - SIFIR JS)
  * ------------------------------------------------
  * LCP OPTİMİZASYONU (Kritik):
- * - Önceki sürümde Framer Motion initial={{opacity:0}} kullanıyordu.
- *   Bu, başlığı JS hydration + animasyon bitene kadar GİZLİYORDU
- *   → LCP 8.9s!
- * - Artık Hero bir SERVER component: içerik HTML'de hazır gelir,
- *   above-the-fold için TARAYICIYA HİÇ JS İNMEZ.
- * - Animasyon yalnızca CSS ile (opacity'yi 0'dan başlatmayan türden).
+ * - Hero bir SERVER component: içerik HTML'de hazır gelir,
+ *   above-the-fold için tarayıcıya hiç JS inmez.
  *
- * SEO: Tek H1 korunur, metin içeriği değişmez.
+ * GÖRSEL/PERFORMANS DENGESİ (HİBRİT MODEL):
+ * - H1: text-gradient-animated → Desktop'ta orijinal kayan ışıltı KORUNUR
+ *   (desktop Lighthouse animasyonla bile 100/100 idi).
+ *   Mobilde (≤768px) globals.css media query animasyonu OTOMATİK dondurur
+ *   → LCP öğesinde repaint yok, mobil skor korunur.
+ * - blur-3xl blob'ları → radial-gradient: aynı yumuşak parlama görseli,
+ *   filter OLMADAN ~0 paint maliyeti (mobil GPU dostu).
+ * - animate-float mobilde CSS ile devre dışı, desktop'ta aktif.
+ *
+ * SEO: Tek H1 korunur, metin içeriği ve link yapısı DEĞİŞMEZ.
+ * CLS: Tüm değişiklikler paint katmanındadır, layout kayması yok.
  */
 
 const performanceMetrics = [
@@ -29,12 +35,30 @@ export default async function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-16">
-      {/* Background Effects (CSS-only, LCP'yi etkilemez) */}
+      {/* Background Effects (CSS-only, filter YOK → mobil GPU dostu) */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-3xl" />
-
+        <div
+          className="absolute top-1/4 -left-1/4 w-96 h-96 rounded-full animate-float"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(59,130,246,0.28) 0%, rgba(59,130,246,0) 70%)",
+          }}
+        />
+        <div
+          className="absolute bottom-1/4 -right-1/4 w-96 h-96 rounded-full animate-float"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(168,85,247,0.28) 0%, rgba(168,85,247,0) 70%)",
+            animationDelay: "2s",
+          }}
+        />
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(236,72,153,0.14) 0%, rgba(236,72,153,0) 70%)",
+          }}
+        />
         {/* Grid Pattern */}
         <div
           className="absolute inset-0 opacity-20"
@@ -62,7 +86,8 @@ export default async function Hero() {
 
           {/* ============================================
               MAIN H1 - SSR'da ANINDA görünür (LCP güvencesi)
-              opacity animasyonu YOK → metin ilk paint'te var
+              Desktop: kayan gradient ışıltısı (orijinal görünüm)
+              Mobil: globals.css ile statik gradient'e dondurulur
               ============================================ */}
           <h1 className="mx-auto max-w-4xl text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-[1.08] tracking-[-0.03em]">
             <span className="text-gradient-animated">
@@ -91,7 +116,6 @@ export default async function Hero() {
               <span>{t("cta.primary")}</span>
               <ArrowRight className="w-5 h-5 shrink-0" aria-hidden="true" />
             </Link>
-
             <Link
               href="/portfolio"
               className={cn(
@@ -114,10 +138,12 @@ export default async function Hero() {
                 className="glassmorphic rounded-xl p-4 border border-white/10 card-glow hover:scale-105 transition-transform duration-300"
               >
                 <div className="flex items-center justify-between mb-2">
-                  <div className={cn(
-                    "w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br",
-                    metric.color
-                  )}>
+                  <div
+                    className={cn(
+                      "w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br",
+                      metric.color
+                    )}
+                  >
                     <metric.icon className="w-5 h-5 text-white" aria-hidden="true" />
                   </div>
                   <span className="text-2xl font-bold text-foreground">

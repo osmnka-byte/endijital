@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import HtmlLang from "@/components/HtmlLang";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
 
@@ -53,9 +54,7 @@ export async function generateMetadata({
         { url: "/icon.png", type: "image/png" },
       ],
       shortcut: ["/favicon.ico"],
-      apple: [
-        { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-      ],
+      apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
     },
     openGraph: {
       type: "website",
@@ -257,6 +256,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
+      {/* HTML lang senkronizasyonu (tr/en) — a11y & SEO */}
+      <HtmlLang locale={locale} />
+
       {/* Unified JSON-LD Schema */}
       <script
         type="application/ld+json"

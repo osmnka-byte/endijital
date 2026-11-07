@@ -85,7 +85,7 @@
         "badge": "Geliştirmede",
         "category": "saas",
         "description": "Trendyol ve Hepsiburada satıcıları için komisyon, kargo ve hizmet bedellerini görünür kılan yapay zekâ destekli kârlılık analizi platformu.",
-        "image": "/images/portfolio/kar-dedektoru.png",
+        "image": "/images/portfolio/kar-dedektoru.webp",
         "tags": ["Next.js 16", "TypeScript", "Tailwind CSS", "Turbopack", "Lucide React"]
       },
       {
@@ -94,7 +94,7 @@
         "badge": "Geliştirmede",
         "category": "saas",
         "description": "Ürün listeleme, sipariş ve fatura süreçlerini tek panelden yöneten çoklu pazaryeri entegrasyon platformu.",
-        "image": "/images/portfolio/entegrematik.png",
+        "image": "/images/portfolio/entegrematik.webp",
         "tags": ["Next.js App Router", "TypeScript", "Tailwind CSS", "Static Export", "Turbopack"]
       },
       {
@@ -167,7 +167,7 @@
         "badge": "Geliştirmede",
         "description": "Trendyol ve Hepsiburada satıcıları için komisyon, kargo ve hizmet bedellerini görünür kılan yapay zekâ destekli kârlılık analizi platformu.",
         "longDescription": "Kâr Dedektörü, pazaryeri satıcılarının brüt ciro ile gerçek net kâr arasındaki görünmeyen kayıpları ortaya çıkarmak için geliştirdiğimiz SaaS platformudur. Komisyon oranları, değişken kargo tarifeleri, hizmet bedelleri ve KDV kesintilerini sipariş bazında hesaplayarak ürün düzeyinde kârlılık görünümü sunar. Platform şu anda kapalı beta sürecindedir.",
-        "image": "/images/portfolio/kar-dedektoru.png",
+        "image": "/images/portfolio/kar-dedektoru.webp",
         "screenshots": [],
         "technologies": ["Next.js 16", "TypeScript", "Turbopack", "Tailwind CSS", "Lucide React", "Geist & Geist Mono"],
         "features": [
@@ -190,7 +190,7 @@
         "badge": "Geliştirmede",
         "description": "Ürün listeleme, sipariş ve fatura süreçlerini tek panelden yöneten çoklu pazaryeri entegrasyon platformu.",
         "longDescription": "Entegrematik, e-ticaret satıcılarının birden fazla pazaryerindeki ürünlerini, siparişlerini ve faturalarını tek ekrandan yönetmesini sağlayan entegrasyon platformudur. Günlük ciro, bekleyen sipariş ve entegrasyon sağlık durumunu özetleyen kontrol paneliyle operasyonel yükü azaltır. Platformun yeni nesil arayüzü geliştirme sürecindedir.",
-        "image": "/images/portfolio/entegrematik.png",
+        "image": "/images/portfolio/entegrematik.webp",
         "screenshots": [],
         "technologies": ["Next.js App Router", "React", "TypeScript", "Static Export (SSG)", "Turbopack", "Tailwind CSS"],
         "features": [

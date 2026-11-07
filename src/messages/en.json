@@ -85,7 +85,7 @@
         "badge": "In Development",
         "category": "saas",
         "description": "An AI-assisted profitability analytics platform that reveals commissions, shipping fees and service costs for Trendyol and Hepsiburada sellers.",
-        "image": "/images/portfolio/kar-dedektoru.png",
+        "image": "/images/portfolio/kar-dedektoru.webp",
         "tags": ["Next.js 16", "TypeScript", "Tailwind CSS", "Turbopack", "Lucide React"]
       },
       {
@@ -94,7 +94,7 @@
         "badge": "In Development",
         "category": "saas",
         "description": "A multi-marketplace integration platform that manages product listing, orders and invoicing from a single panel.",
-        "image": "/images/portfolio/entegrematik.png",
+        "image": "/images/portfolio/entegrematik.webp",
         "tags": ["Next.js App Router", "TypeScript", "Tailwind CSS", "Static Export", "Turbopack"]
       },
       {
@@ -167,7 +167,7 @@
         "badge": "In Development",
         "description": "An AI-assisted profitability analytics platform that reveals commissions, shipping fees and service costs for Trendyol and Hepsiburada sellers.",
         "longDescription": "Kâr Dedektörü is a SaaS platform we are building to expose the hidden gap between gross revenue and true net profit for marketplace sellers. It calculates commission rates, variable shipping tariffs, service fees and VAT deductions on a per-order basis to provide product-level profitability visibility. The platform is currently in closed beta.",
-        "image": "/images/portfolio/kar-dedektoru.png",
+        "image": "/images/portfolio/kar-dedektoru.webp",
         "screenshots": [],
         "technologies": ["Next.js 16", "TypeScript", "Turbopack", "Tailwind CSS", "Lucide React", "Geist & Geist Mono"],
         "features": [
@@ -190,7 +190,7 @@
         "badge": "In Development",
         "description": "A multi-marketplace integration platform that manages product listing, orders and invoicing from a single panel.",
         "longDescription": "Entegrematik enables e-commerce sellers to manage products, orders and invoices across multiple marketplaces from a single screen. Its control panel summarizes daily revenue, pending orders and integration health to reduce operational load. The next-generation interface is currently in development.",
-        "image": "/images/portfolio/entegrematik.png",
+        "image": "/images/portfolio/entegrematik.webp",
         "screenshots": [],
         "technologies": ["Next.js App Router", "React", "TypeScript", "Static Export (SSG)", "Turbopack", "Tailwind CSS"],
         "features": [
@@ -571,7 +571,7 @@
         },
         {
           "title": "Innovation",
-          "description": "We continuously learn and follow the latest technologies. We provide our clients with competitive advantage through modern tools and methodologies."
+          "description": "We continuously learn and follow the latest technologies. We provide our clients with competitive advantage with modern tools and methodologies."
         },
         {
           "title": "Collaboration",

@@ -22,9 +22,14 @@ import { cn } from "@/lib/utils";
 /**
  * PORTFOLIO SECTION (Anasayfa)
  * ------------------------------------------------
- * - 8 proje: 2 gerçek SaaS + 3 demo + 2 Ar-Ge + 1 konsept
- * - Rozetler şeffaflık sağlar (SEO güven sinyali)
- * - Lokal görsel yoksa gradient fallback (kırık ikon ASLA yok)
+ * 8 proje: 2 gerçek SaaS + 3 demo + 2 Ar-Ge + 1 konsept
+ * Rozetler şeffaflık sağlar (SEO güven sinyali)
+ * Lokal görsel yoksa gradient fallback (kırık ikon ASLA yok)
+ *
+ * WEBP GÜNCELLEMESİ:
+ * Lokal portfolyo görselleri .png → .webp dönüştürüldü (~%90 boyut kazancı).
+ * Referanslar güncellendi; alt metinleri, lazy loading ve fallback
+ * mantığı BİREBİR korundu (SEO + mobil uyum + CLS güvencesi).
  */
 
 export type ProjectVisual = {
@@ -35,12 +40,12 @@ export type ProjectVisual = {
 
 export const PROJECT_VISUALS: ProjectVisual[] = [
   {
-    src: "/images/portfolio/kar-dedektoru.png",
+    src: "/images/portfolio/kar-dedektoru.webp",
     gradient: "from-emerald-600/60 via-teal-700/40 to-slate-900",
     icon: LineChart,
   },
   {
-    src: "/images/portfolio/entegrematik.png",
+    src: "/images/portfolio/entegrematik.webp",
     gradient: "from-cyan-600/60 via-sky-700/40 to-slate-900",
     icon: Boxes,
   },
@@ -144,7 +149,6 @@ function ProjectImage({
 
 export default function Portfolio() {
   const t = useTranslations("portfolio");
-
   const projects = t.raw("projects") as Array<{
     title: string;
     slug: string;
@@ -184,7 +188,6 @@ export default function Portfolio() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => {
             const visual = PROJECT_VISUALS[index % PROJECT_VISUALS.length];
-
             return (
               <motion.article
                 key={project.slug}

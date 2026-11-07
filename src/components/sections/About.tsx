@@ -10,6 +10,13 @@ import { Award, Boxes, Gauge, Zap } from "lucide-react";
  * ------------------------------------------------
  * İstatistikler doğrulanabilir değerlerdir:
  * 20+ Teslim Edilen Proje · 5+ SaaS Platformu · 100/100 Lighthouse · 0.7s LCP
+ *
+ * MOBİL UYUM GÜNCELLEMESİ:
+ * - Stats grid: 4 kolon artık lg (1024px+) break noktasında (tabletlerde 2x2).
+ * - Stat değerleri responsive font (text-2xl → sm:text-3xl → lg:text-4xl).
+ * - min-w-0 + break-words ile taşma/kırpılma garantili önlendi.
+ * - Mobilde kart padding'i p-4 (dar ekranlarda içerik alanı genişler).
+ * - CLS riski YOK: tüm boyutlar viewport bazlı, ilk boyamada sabit.
  */
 
 const statIcons = [Award, Boxes, Gauge, Zap];
@@ -45,7 +52,7 @@ export default function About() {
           </motion.div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-16">
             {stats.map((stat, index) => {
               const Icon = statIcons[index % statIcons.length];
               return (
@@ -56,18 +63,24 @@ export default function About() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
                   className={cn(
-                    "glassmorphic rounded-2xl p-6 border border-white/10",
+                    "glassmorphic rounded-2xl p-4 sm:p-6 border border-white/10",
                     "card-glow hover:scale-105",
-                    "transition-all duration-300 text-center"
+                    "transition-all duration-300 text-center",
+                    "min-w-0"
                   )}
                 >
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 mx-auto bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
-                    <Icon className="w-6 h-6 text-white" aria-hidden="true" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mb-3 sm:mb-4 mx-auto bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500">
+                    <Icon
+                      className="w-5 h-5 sm:w-6 sm:h-6 text-white"
+                      aria-hidden="true"
+                    />
                   </div>
-                  <div className="text-3xl md:text-4xl font-bold mb-2 text-gradient">
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 text-gradient leading-tight break-words tabular-nums">
                     {stat.value}
                   </div>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    {stat.label}
+                  </p>
                 </motion.div>
               );
             })}

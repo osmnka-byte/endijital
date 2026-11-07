@@ -12,6 +12,9 @@ const inter = Inter({
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://endijital.com";
 
+/**
+ * VIEWPORT CONFIGURATION (Next.js 15+)
+ */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -21,6 +24,9 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+/**
+ * ROOT METADATA (Global SEO Fallback)
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: "Endijital | Geleceğin Web Mimarisi & Dijital Çözümler",
@@ -84,9 +90,17 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * ROOT LAYOUT
+ * ------------------------------------------------
+ * lang="tr": Varsayılan pazar TR olduğu için statik başlangıç dili.
+ * /en sayfalarında HtmlLang bileşeni bunu client'ta "en"e senkronlar.
+ * Bu sayede ham HTML her zaman geçerli bir lang özniteliği taşır
+ * (Lighthouse a11y + ekran okuyucu + SEO güvencesi).
+ */
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html suppressHydrationWarning className={inter.variable}>
+    <html lang="tr" suppressHydrationWarning className={inter.variable}>
       <body className="min-h-screen bg-background text-foreground font-sans antialiased">
         {children}
       </body>
